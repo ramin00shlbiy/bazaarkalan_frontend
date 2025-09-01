@@ -3,30 +3,657 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه تست Snipcart</title>
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.css" />
+    <title>فروشگاه رامش ایوبی - پرداخت نقدی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: sans-serif; padding: 20px; }
-        .product { border: 1px solid #ccc; padding: 15px; margin: 10px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* هدر فروشگاه */
+        .shop-header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .shop-name {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .shop-description {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        
+        .shop-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* محصولات */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+        
+        .add-to-cart {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background: #219653;
+        }
+        
+        /* سبد خرید */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -380px;
+            width: 380px;
+            height: 100%;
+            background: white;
+            box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+            transition: left 0.4s ease;
+            z-index: 1001;
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .cart-sidebar.open {
+            left: 0;
+        }
+        
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+        
+        .cart-overlay.open {
+            display: block;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .cart-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        .cart-items {
+            flex: 1;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .item-name {
+            flex: 1;
+        }
+        
+        .item-price {
+            color: #e74c3c;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        
+        .remove-item {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cart-footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .checkout-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            background: #2980b9;
+        }
+        
+        /* فرم سفارش */
+        .order-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .submit-order {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+        
+        .submit-order:hover {
+            background: #219653;
+        }
+        
+        /* وضعیت سفارش */
+        .order-status {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: white;
+            border-radius: 15px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-icon {
+            font-size: 4rem;
+            color: #27ae60;
+            margin-bottom: 20px;
+        }
+        
+        .status-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .status-desc {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+        }
+        
+        /* چت داخل */
+        .chat-container {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+        
+        .chat-button {
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .chat-button:hover {
+            transform: scale(1.1);
+        }
+        
+        .chat-box {
+            display: none;
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            width: 350px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .chat-header {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .chat-messages {
+            height: 250px;
+            overflow-y: auto;
+            padding: 15px;
+            background: #f8f9fa;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+        
+        .received {
+            background: white;
+            border: 1px solid #ddd;
+            margin-right: auto;
+        }
+        
+        .sent {
+            background: #3498db;
+            color: white;
+            margin-left: auto;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #eee;
+            background: white;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+        
+        .chat-input button {
+            background: #3498db;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        /* دکمه سبد خرید */
+        .cart-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e74c3c;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #27ae60;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .shop-name {
+                font-size: 2.2rem;
+            }
+            
+            .cart-sidebar {
+                width: 320px;
+                left: -320px;
+            }
+            
+            .chat-box {
+                width: 300px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .shop-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>فروشگاه تست Snipcart</h1>
-    
-    <div class="product">
-        <h3>کیک شکلاتی</h3>
-        <p>500 افغانی</p>
-        <button class="snipcart-add-item"
-                data-item-id="cake-001"
-                data-item-price="500"
-                data-item-name="کیک شکلاتی"
-                data-item-url="/">
-            افزودن به سبد خرید
-        </button>
+    <div class="container">
+        <!-- هدر فروشگاه -->
+        <header class="shop-header">
+            <h1 class="shop-name">دکان رامش</h1>
+            <p class="shop-description">فروشگاه تخصصی خوراک و مواد غذایی</p>
+            <div class="shop-info">
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0700123456</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>کابل، مکوریان</span>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-star"></i>
+                    <span>امتیاز 4.8 (124 نظر)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- محصولات -->
+        <section class="products-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #2c3e50;">محصولات محبوب</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80" alt="کیک شکلاتی" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">کیک چاکلیتی</h3>
+                        <p class="product-price">500 افغانی</p>
+                        <button class="add-to-cart" onclick="addToCart('کیک چاکلیتی', 500, 'cake-001')">
+                            افزودن به سبد خرید
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1598373182131-11e8d52b40c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="نان شیرمال" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">شمالدار</h3>
+                        <p class="product-price">300 افغانی</p>
+                        <button class="add-to-cart" onclick="addToCart('نان شیرمال', 300, 'bread-001')">
+                            افزودن به سبد خرید
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="کلوچه" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">کلچه خانگی</h3>
+                        <p class="product-price">400 افغانی</p>
+                        <button class="add-to-cart" onclick="addToCart('کلوچه خانگی', 400, 'cookie-001')">
+                            افزودن به سبد خرید
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab794f24d6c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80" alt="نان کرایه‌ای" class="product-image">
+                    <div class="product-content">
+                        <h3 class="product-title">کیک یزدیی</h3>
+                        <p class="product-price">250 افغانی</p>
+                        <button class="add-to-cart" onclick="addToCart('نان کرایه‌ای', 250, 'bread-002')">
+                            افزودن به سبد خرید
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- فرم سفارش -->
+        <div class="order-form" id="orderForm">
+            <h2 class="form-title">تکمیل اطلاعات سفارش</h2>
+            <form id="checkoutForm" action="https://formsubmit.co/5f85249e35697864028e4b6cc0ee7599" method="POST">
+                <input type="hidden" name="_subject" value="سفارش جدید - دکان رامش ">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="#">
+                
+                <div class="form-group">
+                    <label for="name">نام کامل:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">شماره تلفن:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">آدرس کامل:</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                
+                <input type="hidden" id="orderDetails" name="orderDetails">
+                <input type="hidden" id="orderTotal" name="orderTotal">
+                
+                <button type="submit" class="submit-order">ثبت نهایی سفارش</button>
+            </form>
+        </div>
+
+        <!-- وضعیت سفارش -->
+        <div class="order-status" id="orderStatus">
+            <div class="status-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="status-title">سفارش شما با موفقیت ثبت شد!</h2>
+            <p class="status-desc">به زودی با شما تماس خواهیم گرفت. شماره پیگیری: <span id="orderNumber"></span></p>
+            <button class="checkout-btn" onclick="continueShopping()">ادامه خرید</button>
+        </div>
     </div>
 
-    <div hidden id="snipcart" data-api-key="YTEyY2YzOWMtNTUzZS00NTcxLTgwNDgtMWM1MTNkODczYzliNjM4OTIzMDg4MzU4Nzg5Mjk4"></div>
-    
-    <script src="https://cdn.snipcart.com/themes/v3.3.1/default/snipcart.js"></script>
-</body>
-</html>
+    <!-- سبد خرید -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">سبد خرید شما</h2>
+            <button class="close-cart" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- آیتم های سبد خرید اینجا نمایش داده می شوند -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>مجموع:</span>
+                <span id="cartTotal">0 افغانی</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">تکمیل سفارش</button>
+        </div>
+    </div>
+
+    <!-- دکمه سبد خرید -->
+    <div class="cart-btn" onclick="openCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
+
+    <!-- چت داخلی -->
+    <div class="chat-container">
+        <div class="chat-button" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h3>پشتیبانی آنلاین</h3>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message received">
+                    سلام! چگونه می‌توانم کمک کنم؟
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="chatInput" placeholde
