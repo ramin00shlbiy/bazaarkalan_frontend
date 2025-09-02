@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت - فروشگاه علی کرمی</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .admin-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .admin-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .orders-list {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .order-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-number {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .order-date {
+            color: #7f8c8d;
+        }
+        
+        .order-details {
+            margin-bottom: 10px;
+        }
+        
+        .order-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn-complete {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .no-orders {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 30px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="admin-header">
+            <h1 class="admin-title">پنل مدیریت فروشگاه</h1>
+            <p>مدیریت سفارشات و موجودی</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalOrders">0</div>
+                <div>تعداد سفارشات</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingOrders">0</div>
+                <div>سفارشات در انتظار</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="completedOrders">0</div>
+                <div>سفارشات تکمیل شده</div>
+            </div>
+        </div>
+        
+        <div class="orders-list">
+            <h2 style="margin-bottom: 20px;">سفارشات اخیر</h2>
+            <div id="ordersContainer">
+                <div class="no-orders">
+                    <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                    <p>هیچ سفارشی ثبت نشده است</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // نمونه داده‌های اولیه (در حالت واقعی از localStorage یا دیتابیس استفاده می‌شود)
+        const sampleOrders = [
+            {
+                id: 'ORD2581',
+                date: '۱۴۰۲/۰۶/۱۰ - ۱۴:۳۰',
+                customer: { name: 'رضا محمدی', phone: '0700123456', address: 'کابل، مکوریان' },
+                items: [
+                    { name: 'کیک شکلاتی', price: 500 },
+                    { name: 'نان شیرمال', price: 300 }
+                ],
+                total: 800,
+                status: 'pending'
+            },
+            {
+                id: 'ORD3692',
+                date: '۱۴۰۲/۰۶/۰۹ - ۱۱:۱۵',
+                customer: { name: 'فاطمه احمدی', phone: '0700654321', address: 'کابل، کارته سخی' },
+                items: [
+                    { name: 'کلوچه خانگی', price: 400 }
+                ],
+                total: 400,
+                status: 'completed'
+            }
+        ];
+        
+        let orders = JSON.parse(localStorage.getItem('shop_orders')) || sampleOrders;
+        
+        // بارگذاری سفارشات
+        function loadOrders() {
+            const ordersContainer = document.getElementById('ordersContainer');
+            const totalOrders = document.getElementById('totalOrders');
+            const pendingOrders = document.getElementById('pendingOrders');
+            const completedOrders = document.getElementById('completedOrders');
+            
+            // آمار
+            const total = orders.length;
+            const pending = orders.filter(order => order.status === 'pending').length;
+            const completed = orders.filter(order => order.status === 'completed').length;
+            
+            totalOrders.textContent = total;
+            pendingOrders.textContent = pending;
+            completedOrders.textContent = completed;
+            
+            // نمایش سفارشات
+            if (orders.length === 0) {
+                ordersContainer.innerHTML = `
+                    <div class="no-orders">
+                        <i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                        <p>هیچ سفارشی ثبت نشده است</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            ordersContainer.innerHTML = '';
+            
+            orders.forEach((order, index) => {
+                let orderItems = '';
+                order.items.forEach(item => {
+                    orderItems += `${item.name} - ${item.price} افغانی<br>`;
+                });
+                
+                ordersContainer.innerHTML += `
+                    <div class="order-item">
+                        <div class="order-header">
+                            <span class="order-number">${order.id}</span>
+                            <span class="order-date">${order.date}</span>
+                        </div>
+                        <div class="order-details">
+                            <strong>مشتری:</strong> ${order.customer.name}<br>
+                            <strong>تلفن:</strong> ${order.customer.phone}<br>
+                            <strong>آدرس:</strong> ${order.customer.address}<br>
+                            <strong>محصولات:</strong><br>${orderItems}
+                            <strong>مجموع:</strong> ${order.total} افغانی
+                        </div>
+                        <div class="order-actions">
+                            <button class="action-btn btn-complete" onclick="completeOrder(${index})">
+                                ${order.status === 'completed' ? 'تکمیل شده' : 'علامت به عنوان تکمیل شده'}
+                            </button>
+                            <button class="action-btn btn-delete" onclick="deleteOrder(${index})">حذف</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        
+        function completeOrder(index) {
+            orders[index].status = 'completed';
+            localStorage.setItem('shop_orders', JSON.stringify(orders));
+            loadOrders();
+            alert('سفارش به عنوان تکمیل شده علامت گذاری شد');
+        }
+        
+        function deleteOrder(index) {
+            if (confirm('آیا از حذف این سفارش مطمئن هستید؟')) {
+                orders.splice(index, 1);
+                localStorage.setItem('shop_orders', JSON.stringify(orders));
+                loadOrders();
+                alert('سفارش حذف شد');
+            }
+        }
+        
+        // راه‌اندازی اولیه
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrders();
+        });
+    </script>
+</body>
+</html>
