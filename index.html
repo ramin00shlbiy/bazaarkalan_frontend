@@ -496,11 +496,12 @@
         
         <div class="order-form" id="orderForm">
             <h2>تکمیل اطلاعات سفارش</h2>
-            <form id="checkoutForm" action="https://formsubmit.co/raminayobi96@gmail.com" method="POST">
+            <form id="checkoutForm" action="https://formsubmit.co/5f85249e35697864028e4b6cc0ee7599" method="POST">
                 <input type="hidden" name="_subject" value="سفارش جدید - مغازه علی کرمی">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://your-site.netlify.app/thanks.html">
+                <input type="hidden" name="_next" value="https://68b7eb0747f7f93ac9ea24bd--bazaarkalan.netlify.app/thanks.html">
+                <input type="hidden" name="_autoresponse" value="سفارش شما با موفقیت ثبت شد. به زودی با شما تماس خواهیم گرفت.">
                 
                 <div class="form-group">
                     <label for="name">نام کامل:</label>
@@ -617,7 +618,7 @@
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const id = this.getAttribute('data-id');
-                    const name = this.getAttribute('dat-name');
+                    const name = this.getAttribute('data-name');
                     const price = parseInt(this.getAttribute('data-price'));
                     addToCart(name, price, id);
                 });
