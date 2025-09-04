@@ -496,12 +496,7 @@
         
         <div class="order-form" id="orderForm">
             <h2>تکمیل اطلاعات سفارش</h2>
-            <form id="checkoutForm" action="https://formsubmit.co/5f85249e35697864028e4b6cc0ee7599" method="POST">
-                <input type="hidden" name="_subject" value="سفارش جدید - مغازه علی کرمی">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://your-site.netlify.app/thanks.html">
-                
+            <form id="checkoutForm">
                 <div class="form-group">
                     <label for="name">نام کامل:</label>
                     <input type="text" id="name" name="name" required>
@@ -546,7 +541,7 @@
                     <a id="locationLink" class="location-link" target="_blank" style="display: none;">مشاهده موقعیت در نقشه</a>
                     <span id="testLocation" class="test-location" style="display: none;">برای تست روی لینک بالا کلیک کنید</span>
                     
-                    <!-- این فیلد برای ارسال لینک نقشه به FormSubmit استفاده می‌شود -->
+                    <!-- این فیلد برای ارسال لینک نقشه استفاده می‌شود -->
                     <input type="hidden" id="locationData" name="موقعیت مکانی">
                 </div>
                 
@@ -603,6 +598,10 @@
     </div>
 
     <script>
+        // تنظیمات بات تلگرام
+        const TELEGRAM_BOT_TOKEN = '8274421553:AAE4UISpQ5vpx3OpLRx3jQvJvSlkLJt43iA';
+        const TELEGRAM_CHAT_ID = '7912053361';
+        
         // مدیریت سبد خرید
         let cart = [];
         let userLocation = null;
@@ -776,12 +775,12 @@
         }
         
         function makeCall() {
-            window.location.href = 'tel:+93701326081'; // شماره تلفن خود را جایگزین کنید
+            window.location.href = 'tel:+93777777777'; // شماره تلفن خود را جایگزین کنید
             toggleChatOptions();
         }
         
         function startChat() {
-            window.open('https://wa.me/989939277416', '_blank'); // شماره واتساپ خود را جایگزین کنید
+            window.open('https://wa.me/93777777777', '_blank'); // شماره واتساپ خود را جایگزین کنید
             toggleChatOptions();
         }
         
@@ -820,7 +819,7 @@
                     // ایجاد لینک برای Google Maps به عنوان fallback
                     const googleMapUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
                     
-                    // ذخیره geo URI در فیلد مخفی - این لینک در ایمیل FormSubmit نمایش داده می‌شود
+                    // ذخیره geo URI در فیلد مخفی - این لینک در پیام تلگرام نمایش داده می‌شود
                     document.getElementById('locationData').value = 
                         `موقعیت مشتری: ${geoUri} (یا ${googleMapUrl})`;
                     
@@ -929,8 +928,42 @@
             return isValid;
         }
         
+        // تابع ارسال به تلگرام
+        async function sendToTelegram(orderData) {
+            const message = `
+🛒 سفارش جدید از فروشگاه
+👤 نام: ${orderData.name}
+📞 تلفن: ${orderData.phone}
+📍 آدرس: ${orderData.address}
+📦 نحوه تحویل: ${orderData.delivery}
+💰 مبلغ: ${orderData.total} افغانی
+📋 سفارشات:
+${orderData.items}
+📍 موقعیت مکانی: ${orderData.location || 'ارسال نشده'}
+            `;
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const result = await response.json();
+                console.log('پیام ارسال شد:', result);
+                return result;
+            } catch (error) {
+                console.error('خطا در ارسال:', error);
+                throw error;
+            }
+        }
+        
         // مدیریت ارسال فرم
-        function handleFormSubmit(e) {
+        async function handleFormSubmit(e) {
             e.preventDefault();
             
             if (!validateForm()) {
@@ -946,12 +979,37 @@
                 }
             }
             
-            // نمایش پیام در حال پردازش
+            // جمع‌آوری داده‌های فرم
+            const orderData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                delivery: document.getElementById('delivery').value,
+                total: document.getElementById('orderTotal').value,
+                items: document.getElementById('orderDetails').value,
+                location: document.getElementById('locationData').value
+            };
+
+            // نمایش loading
             document.getElementById('loading').style.display = 'block';
-            document.getElementById('orderForm').style.display = 'none';
             
-            // ارسال فرم به FormSubmit (به صورت سنتی)
-            document.getElementById('checkoutForm').submit();
+            try {
+                await sendToTelegram(orderData);
+                
+                // مخفی کردن فرم و نمایش پیام موفقیت
+                document.getElementById('orderForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('loading').style.display = 'none';
+                
+                // پاک کردن سبد خرید
+                cart = [];
+                updateCart();
+                
+            } catch (error) {
+                document.getElementById('loading').style.display = 'none';
+                alert('❌ خطا در ثبت سفارش. لطفاً با ما تماس بگیرید.');
+                console.error('Error:', error);
+            }
         }
     </script>
 </body>
