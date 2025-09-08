@@ -741,8 +741,9 @@
             renderProducts();
             updateCart();
             
-            // مدیریت جستجو
-            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            // مدیریت جستجو - این بخش مهم است
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', filterProducts);
             
             // سایر event listenerها
             document.getElementById('cartButton').addEventListener('click', openCart);
@@ -771,7 +772,7 @@
                 }
             });
             
-            // اعتبارسنجی فildهای فرم
+            // اعتبارسنجی فیلدهای فرم
             setupFormValidation();
         });
         
@@ -1238,7 +1239,7 @@ ${orderData.items}
             
             // اگر موقعیت دریافت نشده، از کاربر تایید بگیرید
             if (!userLocation) {
-                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید？");
+                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید؟");
                 if (!confirmSubmit) {
                     return;
                 }
