@@ -6,7 +6,6 @@
     <title>کیک و کلچه فروشی امیرجان</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* تمام استایل‌های قبلی بدون تغییر */
         * {
             margin: 0;
             padding: 0;
@@ -40,35 +39,20 @@
             border-radius: 10px;
             margin-bottom: 30px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            direction: ltr;
         }
         
         .search-bar input {
-            flex: 1;
+            width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
-            border-radius: 30px 0 0 30px;
+            border-radius: 30px;
             font-size: 16px;
             outline: none;
-            direction: rtl;
         }
         
         .search-bar input:focus {
             border-color: #667eea;
             box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
-        }
-        
-        .menu-toggle {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 12px 15px;
-            border-radius: 0 30px 30px 0;
-            cursor: pointer;
-            font-size: 16px;
-            margin-left: -5px;
         }
         
         .products-grid {
@@ -147,6 +131,7 @@
             background: #5a6fd8;
         }
         
+        /* جزئیات محصول */
         .product-details {
             display: none;
             position: fixed;
@@ -197,74 +182,7 @@
             z-index: 1001;
         }
         
-        .categories-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1001;
-        }
-        
-        .categories-sidebar {
-            position: fixed;
-            top: 0;
-            left: -350px;
-            width: 350px;
-            height: 100%;
-            background: white;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-            transition: left 0.3s ease;
-            z-index: 1002;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .categories-sidebar.open {
-            left: 0;
-        }
-        
-        .categories-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .close-categories {
-            background: #F44336;
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        
-        .categories-list {
-            list-style: none;
-        }
-        
-        .categories-list li {
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-        }
-        
-        .categories-list li:hover {
-            background: #f5f5f5;
-        }
-        
+        /* چت داخلی */
         .chat-container {
             position: fixed;
             bottom: 20px;
@@ -324,6 +242,7 @@
             background: #f5f5f5;
         }
         
+        /* سبد خرید */
         .cart-container {
             position: fixed;
             bottom: 20px;
@@ -496,6 +415,7 @@
             font-size: 16px;
         }
         
+        /* فرم ثبت سفارش */
         .order-form {
             background: white;
             padding: 20px;
@@ -548,6 +468,7 @@
             text-align: center;
         }
         
+        /* استایل دکمه دریافت موقعیت */
         .location-btn {
             background: #4285F4;
             color: white;
@@ -620,10 +541,12 @@
             display: none;
         }
         
+        /* استایل برای محصولات فیلتر شده */
         .product-card.hidden {
             display: none;
         }
         
+        /* نوتیفیکیشن */
         .notification {
             position: fixed;
             top: 50%;
@@ -646,6 +569,7 @@
             opacity: 1;
         }
         
+        /* دکمه لغو در سبد خرید */
         .cancel-item {
             background: #ff9800;
             color: white;
@@ -666,7 +590,6 @@
         </header>
 
         <div class="search-bar">
-            <button class="menu-toggle" id="menuToggle">☰</button>
             <input type="text" id="searchInput" placeholder="جستجوی محصولات...">
         </div>
 
@@ -712,6 +635,7 @@
                     <textarea id="details" name="details" placeholder="ملاحظات خاص یا توضیحات اضاف"></textarea>
                 </div>
                 
+                <!-- بخش دریافت موقعیت مکانی -->
                 <div class="form-group">
                     <label>موقعیت مکانی:</label>
                     <button type="button" class="location-btn" id="getLocationBtn">
@@ -722,6 +646,7 @@
                     <a id="locationLink" class="location-link" target="_blank" style="display: none;">مشاهده موقعیت در نقشه</a>
                     <span id="testLocation" class="test-location" style="display: none;">برای برسی روی لینک بالا کلیک کنید</span>
                     
+                    <!-- این فیلد برای ارسال لینک نقشه استفاده می‌شود -->
                     <input type="hidden" id="locationData" name="موقعیت مکانی">
                 </div>
                 
@@ -742,17 +667,7 @@
         </div>
     </div>
 
-    <div class="categories-overlay" id="categoriesOverlay"></div>
-    <div class="categories-sidebar" id="categoriesSidebar">
-        <div class="categories-header">
-            <h2>دسته‌بندی محصولات</h2>
-            <button class="close-categories" id="closeCategories">✕</button>
-        </div>
-        <ul class="categories-list" id="categoriesList">
-            <!-- دسته‌بندی‌ها به صورت دینامیک اضافه خواهند شد -->
-        </ul>
-    </div>
-
+    <!-- سبد خرید -->
     <div class="cart-overlay" id="cartOverlay"></div>
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
@@ -764,6 +679,7 @@
         <button class="checkout-btn" id="checkoutButton">تکمیل سفارش</button>
     </div>
 
+    <!-- چت داخلی -->
     <div class="chat-container">
         <div class="chat-button" id="chatButton">🎧</div>
         <div class="chat-options" id="chatOptions">
@@ -778,6 +694,7 @@
         </div>
     </div>
 
+    <!-- آیکون سبد خرید -->
     <div class="cart-container">
         <div class="cart-button" id="cartButton">
             <i class="fas fa-shopping-cart"></i>
@@ -785,8 +702,10 @@
         </div>
     </div>
 
+    <!-- نوتیفیکیشن -->
     <div class="notification" id="notification">محصول به سبد خرید اضافه شد!</div>
 
+    <!-- تمپلیت محصول (پنهان) -->
     <div class="product-card" id="product-template" style="display: none;">
         <div class="product-image"></div>
         <div class="product-info">
@@ -797,13 +716,14 @@
         </div>
     </div>
 
+    <!-- تمپلیت جزئیات محصول (پنهان) -->
     <div class="product-details" id="details-template" style="display: none;">
         <h3 class="details-title"></h3>
         <div class="product-details-content"></div>
         <button class="close-details">بستن</button>
     </div>
 
-    <!-- لینک به فایل data.js -->
+    <!-- لود کردن داده‌های محصولات از فایل خارجی -->
     <script src="data.js"></script>
 
     <script>
@@ -814,21 +734,15 @@
         // مدیریت سبد خرید
         let cart = [];
         let userLocation = null;
-        let currentCategory = 'all';
-        let currentSearchTerm = '';
         
         // صبر می‌کنیم تا DOM کاملاً لود شود
         document.addEventListener('DOMContentLoaded', function() {
             // مقداردهی اولیه
             renderProducts();
-            populateCategories();
             updateCart();
             
             // مدیریت جستجو
-            document.getElementById('searchInput').addEventListener('input', function() {
-                currentSearchTerm = this.value.toLowerCase();
-                applyFilters();
-            });
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
             
             // سایر event listenerها
             document.getElementById('cartButton').addEventListener('click', openCart);
@@ -840,11 +754,6 @@
             document.getElementById('chatButton').addEventListener('click', toggleChatOptions);
             document.getElementById('callOption').addEventListener('click', makeCall);
             document.getElementById('chatOption').addEventListener('click', startChat);
-            
-            // مدیریت منو و دسته‌بندی‌ها
-            document.getElementById('menuToggle').addEventListener('click', openCategories);
-            document.getElementById('categoriesOverlay').addEventListener('click', closeCategories);
-            document.getElementById('closeCategories').addEventListener('click', closeCategories);
             
             // مدیریت موقعیت مکانی
             document.getElementById('getLocationBtn').addEventListener('click', getLocation);
@@ -862,11 +771,8 @@
                 }
             });
             
-            // اعتبارسنجی فیلدهای فرم
+            // اعتبارسنجی فildهای فرم
             setupFormValidation();
-
-            // اعمال فیلتر اولیه
-            applyFilters();
         });
         
         // تابع برای نمایش محصولات
@@ -886,8 +792,6 @@
                 productCard.style.display = 'block';
                 productCard.removeAttribute('id');
                 productCard.dataset.name = product.name;
-                productCard.dataset.categoryId = product.categoryId;
-                productCard.dataset.id = product.id;
                 
                 // پر کردن اطلاعات
                 productCard.querySelector('.product-image').style.backgroundImage = `url('${product.image}')`;
@@ -914,59 +818,10 @@
                 detailsElement.querySelector('.product-details-content').innerHTML = product.details.content;
                 
                 document.body.appendChild(detailsElement);
-
-                // اضافه کردن کلمات کلیدی برای جستجو
-                const detailsText = product.details.content.replace(/<[^>]*>/g, ''); // حذف تگ‌های HTML
-                productCard.dataset.searchKeywords = `${product.name} ${product.details.title} ${detailsText}`.toLowerCase();
             });
             
             // اضافه کردن event listeners
             attachEventListeners();
-        }
-        
-        // تابع برای پر کردن منوی دسته‌بندی‌ها
-        function populateCategories() {
-            const categoriesList = document.getElementById('categoriesList');
-            
-            // اضافه کردن دسته‌بندی "همه"
-            const allItem = document.createElement('li');
-            allItem.textContent = 'همه محصولات';
-            allItem.dataset.categoryId = 'all';
-            allItem.addEventListener('click', function() {
-                filterProductsByCategory('all');
-                closeCategories();
-            });
-            categoriesList.appendChild(allItem);
-            
-            // اضافه کردن هر دسته‌بندی
-            categories.forEach(category => {
-                const li = document.createElement('li');
-                li.textContent = category.name;
-                li.dataset.categoryId = category.id;
-                li.addEventListener('click', function() {
-                    filterProductsByCategory(category.id);
-                    closeCategories();
-                });
-                categoriesList.appendChild(li);
-            });
-        }
-        
-        // تابع فیلتر کردن محصولات بر اساس دسته‌بندی
-        function filterProductsByCategory(categoryId) {
-            currentCategory = categoryId;
-            applyFilters();
-        }
-        
-        // تابع برای باز کردن منوی دسته‌بندی‌ها
-        function openCategories() {
-            document.getElementById('categoriesSidebar').classList.add('open');
-            document.getElementById('categoriesOverlay').style.display = 'block';
-        }
-        
-        // تابع برای بستن منوی دسته‌بندی‌ها
-        function closeCategories() {
-            document.getElementById('categoriesSidebar').classList.remove('open');
-            document.getElementById('categoriesOverlay').style.display = 'none';
         }
         
         // تابع برای اضافه کردن event listeners به محصولات
@@ -1283,17 +1138,14 @@
             );
         }
         
-        // فیلتر ترکیبی محصولات
-        function applyFilters() {
+        // فیلتر کردن محصولات بر اساس جستجو
+        function filterProducts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const productCards = document.querySelectorAll('.product-card');
+            
             productCards.forEach(card => {
-                const productCategoryId = parseInt(card.dataset.categoryId);
-                const productKeywords = card.dataset.searchKeywords || '';
-
-                const matchesCategory = (currentCategory === 'all' || productCategoryId === currentCategory);
-                const matchesSearch = productKeywords.includes(currentSearchTerm);
-                
-                if (matchesCategory && matchesSearch) {
+                const productName = card.getAttribute('data-name').toLowerCase();
+                if (productName.includes(searchTerm)) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
@@ -1386,7 +1238,7 @@ ${orderData.items}
             
             // اگر موقعیت دریافت نشده، از کاربر تایید بگیرید
             if (!userLocation) {
-                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید؟");
+                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید？");
                 if (!confirmSubmit) {
                     return;
                 }
