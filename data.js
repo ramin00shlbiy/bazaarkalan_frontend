@@ -12,7 +12,7 @@ const allProducts = [
         name: "کیک ککویی",
         price: "500",
         categoryId: 580, // شناسه دسته‌بندی کیک
-        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwa90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80",
+        image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80",
         details: {
             title: "جزئیات کیک ککویی",
             content: `
@@ -76,101 +76,12 @@ const allProducts = [
         details: {
             title: "جزئیات چای مخصوص",
             content: `
-                <p>چای مخصوص با ترکیبی منحصر به فرد من از بهترین برگ‌های چای و گیاهان معطر. از ویژگی‌های این محصول:</p>
+                <p>چای مخصوص با ترکیبی منحصر به فرد از بهترین برگ‌های چای و گیاهان معطر. از ویژگی‌های این محصول:</p>
                 <ul>
-                    <li>ترکیبی من از چای سیاه مرغوب و گیاهان معطر</li>
+                    <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
                     <li>عاری از هرگونه اسانس مصنوعی</li>
-                    <li>مناسب برای مصرف روزانه</li>
-                    <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
-                    <li>وزن خالص: ۴۵۰ گرام</li>
                 </ul>
             `
         }
     }
 ];
-
-// تابع فیلتر کردن محصولات بر اساس دسته‌بندی - نسخه اصلاح شده
-function filterProductsByCategory(categoryId) {
-    const productCards = document.querySelectorAll('.product-card');
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    
-    productCards.forEach(card => {
-        const productCategoryId = card.dataset.categoryId;
-        const productName = card.dataset.name.toLowerCase();
-        
-        // اعمال فیلتر دسته‌بندی و جستجو همزمان
-        const categoryMatch = categoryId === 'all' || parseInt(productCategoryId) === categoryId;
-        const searchMatch = searchTerm === '' || productName.includes(searchTerm);
-        
-        if (categoryMatch && searchMatch) {
-            card.classList.remove('hidden');
-        } else {
-            card.classList.add('hidden');
-        }
-    });
-}
-
-// تابع برای فیلتر کردن محصولات بر اساس جستجو - نسخه اصلاح شده
-function filterProducts() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    const productCards = document.querySelectorAll('.product-card');
-    const currentCategory = document.querySelector('.categories-list li.active')?.dataset.categoryId || 'all';
-    
-    productCards.forEach(card => {
-        const productName = card.dataset.name.toLowerCase();
-        const productCategoryId = card.dataset.categoryId;
-        
-        // اعمال فیلتر جستجو و دسته‌بندی همزمان
-        const searchMatch = productName.includes(searchTerm);
-        const categoryMatch = currentCategory === 'all' || parseInt(productCategoryId) === parseInt(currentCategory);
-        
-        if (searchMatch && categoryMatch) {
-            card.classList.remove('hidden');
-        } else {
-            card.classList.add('hidden');
-        }
-    });
-}
-
-// در تابع populateCategories، یک کلاس active برای دسته‌بندی انتخاب شده اضافه کنید
-function populateCategories() {
-    const categoriesList = document.getElementById('categoriesList');
-    categoriesList.innerHTML = ''; // پاک کردن لیست قبل از پر کردن مجدد
-    
-    // اضافه کردن دسته‌بندی "همه"
-    const allItem = document.createElement('li');
-    allItem.textContent = 'همه محصولات';
-    allItem.dataset.categoryId = 'all';
-    allItem.classList.add('active'); // فعال کردن پیش‌فرض
-    allItem.addEventListener('click', function() {
-        // حذف کلاس active از همه آیتم‌ها
-        document.querySelectorAll('.categories-list li').forEach(li => {
-            li.classList.remove('active');
-        });
-        // اضافه کردن کلاس active به آیتم انتخاب شده
-        this.classList.add('active');
-        
-        filterProductsByCategory('all');
-        closeCategories();
-    });
-    categoriesList.appendChild(allItem);
-    
-    // اضافه کردن هر دسته‌بندی
-    categories.forEach(category => {
-        const li = document.createElement('li');
-        li.textContent = category.name;
-        li.dataset.categoryId = category.id;
-        li.addEventListener('click', function() {
-            // حذف کلاس active از همه آیتم‌ها
-            document.querySelectorAll('.categories-list li').forEach(li => {
-                li.classList.remove('active');
-            });
-            // اضافه کردن کلاس active به آیتم انتخاب شده
-            this.classList.add('active');
-            
-            filterProductsByCategory(category.id);
-            closeCategories();
-        });
-        categoriesList.appendChild(li);
-    });
-}
