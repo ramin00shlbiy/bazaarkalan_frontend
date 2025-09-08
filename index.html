@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -480,7 +478,7 @@
             cursor: pointer;
             margin-top: 10px;
             width: 100%;
-            font-size: 16px;ع
+            font-size: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -557,7 +555,7 @@
             background: #4CAF50;
             color: white;
             padding: 20px 30px;
-            border-radius: 15px; /* گردتر کردن گوشه‌ها */
+            border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             transition: opacity 0.3s ease;
@@ -587,7 +585,7 @@
 <body>
     <div class="container">
         <header class="shop-header">
-            <h1>کیک و کلچه امیرجان </h1>
+            <h1>کیک و کلچه امیرجان</h1>
             <p>کیک و کلچه امیرجان با بهترین کیفیت برای شما مشتریان عزیز</p>
         </header>
 
@@ -595,123 +593,8 @@
             <input type="text" id="searchInput" placeholder="جستجوی محصولات...">
         </div>
 
-        <div class="products-grid">
-            <div class="product-card" data-name="کیک ککویی">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80')"></div>
-                <div class="product-info">
-                    <h3>کیک ککویی</h3>
-                    <p>500 افغانی</p>
-                    <button class="add-to-cart" data-id="cake-001" data-name="کیک ککویی" data-price="500">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-cake-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-name="کلچه با طعم قهوه">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80')"></div>
-                <div class="product-info">
-                    <h3>کلچه با طعم قهوه</h3>
-                    <p>300 افغانی</p>
-                    <button class="add-to-cart" data-id="bread-001" data-name="کلچه با طعم قهوه" data-price="300">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-bread-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-name="کیک خامه خوشک">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80')"></div>
-                <div class="product-info">
-                    <h3>کیک خامه خوشک</h3>
-                    <p>400 افغانی</p>
-                    <button class="add-to-cart" data-id="sweet-001" data-name="کیک خامه خوشک " data-price="400">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-sweet-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-name="چای مخصوص">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563822245302-272c9e0e71e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')"></div>
-                <div class="product-info">
-                    <h3>چای مخصوص</h3>
-                    <p>350 افغانی</p>
-                    <button class="add-to-cart" data-id="tea-001" data-name="چای مخصوص" data-price="350">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-tea-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- جزئیات محصولات (پنهان) -->
-        <div class="product-details" id="details-cake-001">
-            <h3>جزئیات کیک ککویی</h3>
-            <div class="product-details-content">
-                <p>این کیک ککویی با بهترین مواد اولیه و بدون هیچ گونه مواد نگهدارنده تهیه شده است. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>حاوی ککو مرغوب بلژیکی</li>
-                    <li>فاقد مواد نگهدارنده</li>
-                    <li>مناسب برای افراد دیابتی (نسخه بدون قند)</li>
-                    <li>حجم: ۱ کیلوگرم</li>
-                    <li>ماندگاری: ۵ روز در یخچال</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
-        </div>
-        
-        <div class="product-details" id="details-bread-001">
-            <h3>جزئیات کلچه با طعم قهوه</h3>
-            <div class="product-details-content">
-                <p>کلچه با طعم قهوه تازه پخته شده با روش سنتی و مواد اولیه مرغوب. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>تهیه شده از آرد ستاره</li>
-                    <li>فاقد هرگونه قند شیرین</li>
-                    <li>حاوی شیر تازه</li>
-                    <li>تازه پخته شده روزانه</li>
-                    <li>مصرف بهتر: همان روز تولید</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
-        </div>
-        
-        <div class="product-details" id="details-sweet-001">
-            <h3>جزئیات کیک خامه خشک</h3>
-            <div class="product-details-content">
-                <p>کیک خامه سنتی با طعمی بی‌نظیر و کیفیت بالا. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>انواع مختلف: بادامی، نارگیلی، پستهای</li>
-                    <li>تهیه شده با بهترین مواد اولیه</li>
-                    <li>فاقد روغن نباتی</li>
-                    <li>بسته‌بندی شکیل و مناسب برای سوغات</li>
-                    <li>ماندگاری: ۳۰ روز در دمای محیط</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
-        </div>
-        
-        <div class="product-details" id="details-tea-001">
-            <h3>جزئیات چای مخصوص</h3>
-            <div class="product-details-content">
-                <p>چای مخصوص با ترکیبی از بهترین برگ‌های چای و گیاهان معطر. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
-                    <li>عاری از هرگونه اسانس مصنوعی</li>
-                    <li>مناسب برای مصرف روزانه</li>
-                    <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
-                    <li>وزن خالص: ۴۵۰ گرام</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
+        <div class="products-grid" id="products-container">
+            <!-- محصولات به صورت خودکار اینجا نمایش داده می‌شوند -->
         </div>
         
         <div class="details-overlay" id="detailsOverlay"></div>
@@ -822,6 +705,27 @@
     <!-- نوتیفیکیشن -->
     <div class="notification" id="notification">محصول به سبد خرید اضافه شد!</div>
 
+    <!-- تمپلیت محصول (پنهان) -->
+    <div class="product-card" id="product-template" style="display: none;">
+        <div class="product-image"></div>
+        <div class="product-info">
+            <h3 class="product-title"></h3>
+            <p class="product-price"></p>
+            <button class="add-to-cart">افزودن به سبد خرید</button>
+            <button class="details-btn">جزئیات محصول</button>
+        </div>
+    </div>
+
+    <!-- تمپلیت جزئیات محصول (پنهان) -->
+    <div class="product-details" id="details-template" style="display: none;">
+        <h3 class="details-title"></h3>
+        <div class="product-details-content"></div>
+        <button class="close-details">بستن</button>
+    </div>
+
+    <!-- لود کردن داده‌های محصولات از فایل خارجی -->
+    <script src="data.js"></script>
+
     <script>
         // تنظیمات بات تلگرام
         const TELEGRAM_BOT_TOKEN = '8274421553:AAE4UISpQ5vpx3OpLRx3jQvJvSlkLJt43iA';
@@ -834,36 +738,13 @@
         // صبر می‌کنیم تا DOM کاملاً لود شود
         document.addEventListener('DOMContentLoaded', function() {
             // مقداردهی اولیه
+            renderProducts();
             updateCart();
             
-            // اضافه کردن محصول به سبد خرید
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const name = this.getAttribute('data-name');
-                    const price = parseInt(this.getAttribute('data-price'));
-                    addToCart(name, price, id);
-                });
-            });
+            // مدیریت جستجو
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
             
-            // نمایش جزئیات محصول
-            const detailsButtons = document.querySelectorAll('.details-btn');
-            detailsButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const detailsId = this.getAttribute('data-details');
-                    showProductDetails(detailsId);
-                });
-            });
-            
-            // بستن جزئیات محصول
-            document.querySelectorAll('.close-details').forEach(button => {
-                button.addEventListener('click', closeProductDetails);
-            });
-            
-            document.getElementById('detailsOverlay').addEventListener('click', closeProductDetails);
-            
-            // مدیریت سبد خرید
+            // سایر event listenerها
             document.getElementById('cartButton').addEventListener('click', openCart);
             document.getElementById('cartOverlay').addEventListener('click', closeCart);
             document.getElementById('closeCart').addEventListener('click', closeCart);
@@ -880,9 +761,6 @@
             // مدیریت فرم
             document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
             
-            // مدیریت جستجو
-            document.getElementById('searchInput').addEventListener('input', filterProducts);
-            
             // بستن منوهای باز وقتی کاربر در خارج از آنها کلیک می‌کند
             document.addEventListener('click', function(event) {
                 const chatOptions = document.getElementById('chatOptions');
@@ -893,9 +771,82 @@
                 }
             });
             
-            // اعتبارسنجی فیلدهای فرم
+            // اعتبارسنجی فildهای فرم
             setupFormValidation();
         });
+        
+        // تابع برای نمایش محصولات
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            const productTemplate = document.getElementById('product-template');
+            const detailsTemplate = document.getElementById('details-template');
+            
+            // پاک کردن محتوای قبلی
+            container.innerHTML = '';
+            document.querySelectorAll('.product-details:not(#details-template)').forEach(el => el.remove());
+            
+            // ساخت محصولات
+            allProducts.forEach(product => {
+                // ساخت کارت محصول
+                const productCard = productTemplate.cloneNode(true);
+                productCard.style.display = 'block';
+                productCard.removeAttribute('id');
+                productCard.dataset.name = product.name;
+                
+                // پر کردن اطلاعات
+                productCard.querySelector('.product-image').style.backgroundImage = `url('${product.image}')`;
+                productCard.querySelector('.product-title').textContent = product.name;
+                productCard.querySelector('.product-price').textContent = `${product.price} افغانی`;
+                
+                // تنظیم دکمه‌ها
+                const addBtn = productCard.querySelector('.add-to-cart');
+                addBtn.dataset.id = product.id;
+                addBtn.dataset.name = product.name;
+                addBtn.dataset.price = product.price;
+                
+                const detailsBtn = productCard.querySelector('.details-btn');
+                detailsBtn.dataset.details = `details-${product.id}`;
+                
+                // اضافه به صفحه
+                container.appendChild(productCard);
+                
+                // ساخت جزئیات محصول
+                const detailsElement = detailsTemplate.cloneNode(true);
+                detailsElement.style.display = 'none';
+                detailsElement.id = `details-${product.id}`;
+                detailsElement.querySelector('.details-title').textContent = product.details.title;
+                detailsElement.querySelector('.product-details-content').innerHTML = product.details.content;
+                
+                document.body.appendChild(detailsElement);
+            });
+            
+            // اضافه کردن event listeners
+            attachEventListeners();
+        }
+        
+        // تابع برای اضافه کردن event listeners به محصولات
+        function attachEventListeners() {
+            // اضافه کردن event listeners به دکمه‌های جدید
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    addToCart(
+                        this.dataset.name, 
+                        parseInt(this.dataset.price), 
+                        this.dataset.id
+                    );
+                });
+            });
+            
+            document.querySelectorAll('.details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showProductDetails(this.dataset.details);
+                });
+            });
+            
+            document.querySelectorAll('.close-details').forEach(btn => {
+                btn.addEventListener('click', closeProductDetails);
+            });
+        }
         
         // نمایش جزئیات محصول
         function showProductDetails(detailsId) {
@@ -1089,12 +1040,12 @@
         }
         
         function makeCall() {
-            window.location.href = 'tel:+93701326081'; // شماره تلفن خود را جایگزین کنید
+            window.location.href = 'tel:+93701326081';
             toggleChatOptions();
         }
         
-                function startChat() {
-            window.open('https://wa.me/989939277416', '_blank'); // شماره واتساپ خود را جایگزین کنید
+        function startChat() {
+            window.open('https://wa.me/989939277416', '_blank');
             toggleChatOptions();
         }
         
@@ -1287,7 +1238,7 @@ ${orderData.items}
             
             // اگر موقعیت دریافت نشده، از کاربر تایید بگیرید
             if (!userLocation) {
-                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید؟");
+                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید？");
                 if (!confirmSubmit) {
                     return;
                 }
