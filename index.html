@@ -719,7 +719,7 @@
                     </button>
                     <div id="locationStatus" class="location-status"></div>
                     <div id="mapPreview" class="map-preview"></div>
-                    <a id="locationLink" class="location-link" target="_blank" style="display: none;">مشاهده موقعیت в نقشه</a>
+                    <a id="locationLink" class="location-link" target="_blank" style="display: none;">مشاهده موقعیت در نقشه</a>
                     <span id="testLocation" class="test-location" style="display: none;">برای برسی روی لینک بالا کلیک کنید</span>
                     
                     <input type="hidden" id="locationData" name="موقعیت مکانی">
@@ -814,6 +814,8 @@
         // مدیریت سبد خرید
         let cart = [];
         let userLocation = null;
+        let currentCategory = 'all';
+        let currentSearchTerm = '';
         
         // صبر می‌کنیم تا DOM کاملاً لود شود
         document.addEventListener('DOMContentLoaded', function() {
@@ -823,7 +825,10 @@
             updateCart();
             
             // مدیریت جستجو
-            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            document.getElementById('searchInput').addEventListener('input', function() {
+                currentSearchTerm = this.value.toLowerCase();
+                applyFilters();
+            });
             
             // سایر event listenerها
             document.getElementById('cartButton').addEventListener('click', openCart);
@@ -859,6 +864,9 @@
             
             // اعتبارسنجی فیلدهای فرم
             setupFormValidation();
+
+            // اعمال فیلتر اولیه
+            applyFilters();
         });
         
         // تابع برای نمایش محصولات
@@ -906,6 +914,10 @@
                 detailsElement.querySelector('.product-details-content').innerHTML = product.details.content;
                 
                 document.body.appendChild(detailsElement);
+
+                // اضافه کردن کلمات کلیدی برای جستجو
+                const detailsText = product.details.content.replace(/<[^>]*>/g, ''); // حذف تگ‌های HTML
+                productCard.dataset.searchKeywords = `${product.name} ${product.details.title} ${detailsText}`.toLowerCase();
             });
             
             // اضافه کردن event listeners
@@ -941,20 +953,8 @@
         
         // تابع فیلتر کردن محصولات بر اساس دسته‌بندی
         function filterProductsByCategory(categoryId) {
-            const productCards = document.querySelectorAll('.product-card');
-            
-            productCards.forEach(card => {
-                if (categoryId === 'all') {
-                    card.classList.remove('hidden');
-                } else {
-                    const productCategoryId = card.dataset.categoryId;
-                    if (parseInt(productCategoryId) === categoryId) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                }
-            });
+            currentCategory = categoryId;
+            applyFilters();
         }
         
         // تابع برای باز کردن منوی دسته‌بندی‌ها
@@ -1229,12 +1229,12 @@
                     // ایجاد لینک برای Google Maps به عنوان fallback
                     const googleMapUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
                     
-                    // ذخیره geo URI в فیلد مخفی - این لینک در پیام تلگرام نمایش داده می‌شود
+                    // ذخیره geo URI در فیلد مخفی - این لینک در پیام تلگرام نمایش داده می‌شود
                     document.getElementById('locationData').value = 
                         `موقعیت مشتری: ${geoUri} (یا ${googleMapUrl})`;
                     
                     // نمایش پیام موفقیت
-                    locationStatus.textContent = 'موقعیت شما با успеیت دریافت شد.';
+                    locationStatus.textContent = 'موقعیت شما با موفقیت دریافت شد.';
                     locationStatus.classList.add('location-success');
                     
                     // نمایش پیش‌نمایش نقشه
@@ -1283,14 +1283,17 @@
             );
         }
         
-        // فیلتر کردن محصولات بر اساس جستجو
-        function filterProducts() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+        // فیلتر ترکیبی محصولات
+        function applyFilters() {
             const productCards = document.querySelectorAll('.product-card');
-            
             productCards.forEach(card => {
-                const productName = card.getAttribute('data-name').toLowerCase();
-                if (productName.includes(searchTerm)) {
+                const productCategoryId = parseInt(card.dataset.categoryId);
+                const productKeywords = card.dataset.searchKeywords || '';
+
+                const matchesCategory = (currentCategory === 'all' || productCategoryId === currentCategory);
+                const matchesSearch = productKeywords.includes(currentSearchTerm);
+                
+                if (matchesCategory && matchesSearch) {
                     card.classList.remove('hidden');
                 } else {
                     card.classList.add('hidden');
