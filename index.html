@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فروشگاه علی کرمی</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="data.js" defer></script>
     <style>
         * {
             margin: 0;
@@ -142,8 +143,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-
-z-index: 1002;
+            z-index: 1002;
             width: 90%;
             max-width: 500px;
             max-height: 80vh;
@@ -285,8 +285,7 @@ z-index: 1002;
             display: flex;
             align-items: center;
             justify-content: center;
-
-font-size: 14px;
+            font-size: 14px;
             font-weight: bold;
         }
         
@@ -442,8 +441,7 @@ font-size: 14px;
         }
         
         .form-group input, .form-group textarea, .form-group select {
-
-width: 100%;
+            width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -558,7 +556,7 @@ width: 100%;
             background: #4CAF50;
             color: white;
             padding: 20px 30px;
-            border-radius: 15px; /* گردتر کردن گوشه‌ها */
+            border-radius: 15px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             transition: opacity 0.3s ease;
@@ -596,124 +594,8 @@ width: 100%;
             <input type="text" id="searchInput" placeholder="جستجوی محصولات...">
         </div>
 
-<div class="products-grid">
-            <div class="product-card" data-name="کیک شکلاتی">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80')"></div>
-                <div class="product-info">
-                    <h3>کیک شکلاتی</h3>
-                    <p>500 افغانی</p>
-                    <button class="add-to-cart" data-id="cake-001" data-name="کیک شکلاتی" data-price="500">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-cake-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-name="نان شیرمال">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80')"></div>
-                <div class="product-info">
-                    <h3>نان شیرمال</h3>
-                    <p>300 افغانی</p>
-                    <button class="add-to-cart" data-id="bread-001" data-name="نان شیرمال" data-price="300">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-bread-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-name="شیرینی خشک">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80')"></div>
-                <div class="product-info">
-                    <h3>شیرینی خشک</h3>
-                    <p>400 افغانی</p>
-                    <button class="add-to-cart" data-id="sweet-001" data-name="شیرینی خشک" data-price="400">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-sweet-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-            
-            <div class="product-card" data-name="چای مخصوص">
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563822245302-272c9e0e71e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')"></div>
-                <div class="product-info">
-                    <h3>چای مخصوص</h3>
-                    <p>350 افغانی</p>
-                    <button class="add-to-cart" data-id="tea-001" data-name="چای مخصوص" data-price="350">
-                        افزودن به سبد خرید
-                    </button>
-                    <button class="details-btn" data-details="details-tea-001">
-                        جزئیات محصول
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- جزئیات محصولات (پنهان) -->
-        <div class="product-details" id="details-cake-001">
-            <h3>جزئیات کیک شکلاتی</h3>
-            <div class="product-details-content">
-                <p>این کیک شکلاتی با بهترین مواد اولیه و بدون هیچ گونه مواد نگهدارنده تهیه شده است. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>حاوی شکلات مرغوب بلژیکی</li>
-                    <li>فاقد مواد نگهدارنده</li>
-                    <li>مناسب برای افراد دیابتی (نسخه بدون قند)</li>
-
-<li>حجم: ۱ کیلوگرم</li>
-                    <li>ماندگاری: ۵ روز در یخچال</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
-        </div>
-        
-        <div class="product-details" id="details-bread-001">
-            <h3>جزئیات نان شیرمال</h3>
-            <div class="product-details-content">
-                <p>نان شیرمال تازه پخته شده با روش سنتی و مواد اولیه مرغوب. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>تهیه شده از آرد ستاره</li>
-                    <li>فاقد هرگونه جوش شیرین</li>
-                    <li>حاوی شیر تازه</li>
-                    <li>تازه پخته شده روزانه</li>
-                    <li>مصرف بهتر: همان روز تولید</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
-        </div>
-        
-        <div class="product-details" id="details-sweet-001">
-            <h3>جزئیات شیرینی خشک</h3>
-            <div class="product-details-content">
-                <p>شیرینی خشک سنتی با طعمی بی‌نظیر و کیفیت بالا. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>انواع مختلف: بادامی، نارگیلی، پستهای</li>
-                    <li>تهیه شده با بهترین مواد اولیه</li>
-                    <li>فاقد روغن نباتی</li>
-                    <li>بسته‌بندی شکیل و مناسب برای سوغات</li>
-                    <li>ماندگاری: ۳۰ روز در دمای محیط</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
-        </div>
-        
-        <div class="product-details" id="details-tea-001">
-            <h3>جزئیات چای مخصوص</h3>
-            <div class="product-details-content">
-                <p>چای مخصوص با ترکیبی از بهترین برگ‌های چای و گیاهان معطر. از ویژگی‌های این محصول:</p>
-                <ul>
-                    <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
-                    <li>عاری از هرگونه اسانس مصنوعی</li>
-                    <li>مناسب برای مصرف روزانه</li>
-                    <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
-                    <li>وزن خالص: ۴۵۰ گرم</li>
-                </ul>
-            </div>
-            <button class="close-details">بستن</button>
+        <div class="products-grid" id="products-container">
+            <!-- محصولات به صورت خودکار اینجا نمایش داده می‌شوند -->
         </div>
         
         <div class="details-overlay" id="detailsOverlay"></div>
@@ -747,8 +629,7 @@ width: 100%;
                         <option value="pickup">تحویل در فروشگاه</option>
                     </select>
                     <div class="error-message" id="deliveryError">لطفاً نحوه تحویل را انتخاب کنید</div>
-
-</div>
+                </div>
                 
                 <div class="form-group">
                     <label for="details">جزییات اضافی (اختیاری):</label>
@@ -837,37 +718,13 @@ width: 100%;
         // صبر می‌کنیم تا DOM کاملاً لود شود
         document.addEventListener('DOMContentLoaded', function() {
             // مقداردهی اولیه
+            renderProducts();
             updateCart();
             
-            // اضافه کردن محصول به سبد خرید
-            const addToCartButtons = document.querySelectorAll('.add-to-cart');
-            addToCartButtons.forEach(button => {
-
-button.addEventListener('click', function() {
-                    const id = this.getAttribute('data-id');
-                    const name = this.getAttribute('data-name');
-                    const price = parseInt(this.getAttribute('data-price'));
-                    addToCart(name, price, id);
-                });
-            });
+            // مدیریت جستجو
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
             
-            // نمایش جزئیات محصول
-            const detailsButtons = document.querySelectorAll('.details-btn');
-            detailsButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const detailsId = this.getAttribute('data-details');
-                    showProductDetails(detailsId);
-                });
-            });
-            
-            // بستن جزئیات محصول
-            document.querySelectorAll('.close-details').forEach(button => {
-                button.addEventListener('click', closeProductDetails);
-            });
-            
-            document.getElementById('detailsOverlay').addEventListener('click', closeProductDetails);
-            
-            // مدیریت سبد خرید
+            // سایر event listenerها
             document.getElementById('cartButton').addEventListener('click', openCart);
             document.getElementById('cartOverlay').addEventListener('click', closeCart);
             document.getElementById('closeCart').addEventListener('click', closeCart);
@@ -884,9 +741,6 @@ button.addEventListener('click', function() {
             // مدیریت فرم
             document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
             
-            // مدیریت جستجو
-            document.getElementById('searchInput').addEventListener('input', filterProducts);
-            
             // بستن منوهای باز وقتی کاربر در خارج از آنها کلیک می‌کند
             document.addEventListener('click', function(event) {
                 const chatOptions = document.getElementById('chatOptions');
@@ -897,9 +751,85 @@ button.addEventListener('click', function() {
                 }
             });
             
-            // اعتبارسنجی فیلدهای فرم
+            // اعتبارسنجی فildهای فرم
             setupFormValidation();
         });
+        
+        // تابع برای نمایش محصولات
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            
+            // پاک کردن محتوای قبلی
+            container.innerHTML = '';
+            document.querySelectorAll('.product-details').forEach(el => el.remove());
+            
+            // ساخت محصولات
+            allProducts.forEach(product => {
+                // ساخت کارت محصول
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.dataset.name = product.name;
+                
+                // پر کردن اطلاعات
+                productCard.innerHTML = `
+                    <div class="product-image" style="background-image: url('${product.image}')"></div>
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.price} افغانی</p>
+                        <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
+                            افزودن به سبد خرید
+                        </button>
+                        <button class="details-btn" data-details="details-${product.id}">
+                            جزئیات محصول
+                        </button>
+                    </div>
+                `;
+                
+                // اضافه به صفحه
+                container.appendChild(productCard);
+                
+                // ساخت جزئیات محصول
+                const detailsElement = document.createElement('div');
+                detailsElement.className = 'product-details';
+                detailsElement.id = `details-${product.id}`;
+                detailsElement.innerHTML = `
+                    <h3>${product.details.title}</h3>
+                    <div class="product-details-content">
+                        ${product.details.content}
+                    </div>
+                    <button class="close-details">بستن</button>
+                `;
+                
+                document.body.appendChild(detailsElement);
+            });
+            
+            // اضافه کردن event listeners
+            attachEventListeners();
+        }
+        
+        // تابع برای اضافه کردن event listeners به محصولات
+        function attachEventListeners() {
+            // اضافه کردن event listeners به دکمه‌های جدید
+            document.querySelectorAll('.add-to-cart').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    addToCart(
+                        this.dataset.name, 
+                        parseInt(this.dataset.price), 
+                        this.dataset.id
+                    );
+                });
+            });
+            
+            document.querySelectorAll('.details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    showProductDetails(this.dataset.details);
+                });
+            });
+            
+            document.querySelectorAll('.close-details').forEach(btn => {
+                btn.addEventListener('click', closeProductDetails);
+            });
+        }
         
         // نمایش جزئیات محصول
         function showProductDetails(detailsId) {
@@ -927,8 +857,7 @@ button.addEventListener('click', function() {
         // نمایش نوتیفیکیشن
         function showNotification(message) {
             const notification = document.getElementById('notification');
-
-notification.textContent = message;
+            notification.textContent = message;
             notification.classList.add('show');
             
             setTimeout(() => {
@@ -951,7 +880,7 @@ notification.textContent = message;
             updateCart();
             
             // نمایش نوتیفیکیشن به جای alert
-            showNotification(${name} به سبد خرید اضافه شد!);
+            showNotification(`${name} به سبد خرید اضافه شد!`);
             
             // انیمیشن سبد خرید
             animateCart();
@@ -1008,7 +937,7 @@ notification.textContent = message;
                 
                 const cartItemElement = document.createElement('div');
                 cartItemElement.className = 'cart-item';
-                cartItemElement.innerHTML = 
+                cartItemElement.innerHTML = `
                     <div class="cart-item-info">
                         <div>${item.name}</div>
                         <div>${item.price} افغانی</div>
@@ -1019,13 +948,12 @@ notification.textContent = message;
                         <span class="item-quantity">${item.quantity}</span>
                         <button class="quantity-btn" data-id="${item.id}" data-action="increase">+</button>
                     </div>
-                ;
+                `;
                 
                 // اضافه کردن event listener برای دکمه‌های افزایش و کاهش
                 const increaseBtn = cartItemElement.querySelector('[data-action="increase"]');
                 const decreaseBtn = cartItemElement.querySelector('[data-action="decrease"]');
-
-const cancelBtn = cartItemElement.querySelector('.cancel-item');
+                const cancelBtn = cartItemElement.querySelector('.cancel-item');
                 
                 increaseBtn.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-id');
@@ -1045,7 +973,7 @@ const cancelBtn = cartItemElement.querySelector('.cancel-item');
                 cartItems.appendChild(cartItemElement);
             });
             
-            cartTotal.textContent = مجموع: ${total} افغانی;
+            cartTotal.textContent = `مجموع: ${total} افغانی`;
             cartCount.textContent = count;
             
             if (cart.length === 0) {
@@ -1080,12 +1008,12 @@ const cancelBtn = cartItemElement.querySelector('.cancel-item');
             let total = 0;
             
             cart.forEach(item => {
-                orderDetails += ${item.name} - ${item.price} افغانی × ${item.quantity}\n;
+                orderDetails += `${item.name} - ${item.price} افغانی × ${item.quantity}\n`;
                 total += item.price * item.quantity;
             });
             
             document.getElementById('orderDetails').value = orderDetails;
-            document.getElementById('orderTotal').value = ${total} افغانی;
+            document.getElementById('orderTotal').value = `${total} افغانی`;
         }
         
         // مدیریت گزینه‌های چت
@@ -1119,8 +1047,7 @@ const cancelBtn = cartItemElement.querySelector('.cancel-item');
             
             if (!navigator.geolocation) {
                 locationStatus.textContent = 'مرورگر شما از دریافت موقعیت پشتیبانی نمی‌کند.';
-
-locationStatus.classList.add('location-error');
+                locationStatus.classList.add('location-error');
                 getLocationBtn.disabled = false;
                 getLocationBtn.textContent = '📍 دریافت موقعیت مکانی';
                 return;
@@ -1135,14 +1062,14 @@ locationStatus.classList.add('location-error');
                     userLocation = { latitude, longitude };
                     
                     // ایجاد geo URI - این لینک مستقیماً اپلیکیشن Maps را باز می‌کند
-                    const geoUri = geo:${latitude},${longitude}?q=${latitude},${longitude};
+                    const geoUri = `geo:${latitude},${longitude}?q=${latitude},${longitude}`;
                     
                     // ایجاد لینک برای Google Maps به عنوان fallback
-                    const googleMapUrl = https://www.google.com/maps?q=${latitude},${longitude};
+                    const googleMapUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
                     
                     // ذخیره geo URI در فیلد مخفی - این لینک در پیام تلگرام نمایش داده می‌شود
                     document.getElementById('locationData').value = 
-                        موقعیت مشتری: ${geoUri} (یا ${googleMapUrl});
+                        `موقعیت مشتری: ${geoUri} (یا ${googleMapUrl})`;
                     
                     // نمایش پیام موفقیت
                     locationStatus.textContent = 'موقعیت شما با موفقیت دریافت شد.';
@@ -1152,8 +1079,8 @@ locationStatus.classList.add('location-error');
                     const mapPreview = document.getElementById('mapPreview');
                     mapPreview.style.display = 'block';
                     mapPreview.innerHTML = 
-                        <iframe width="100%" height="100%" frameborder="0" style="border:0" 
-                         src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.01}%2C${latitude-0.01}%2C${longitude+0.01}%2C${latitude+0.01}&amp;layer=mapnik&amp;marker=${latitude}%2C${longitude}" allowfullscreen></iframe>;
+                        `<iframe width="100%" height="100%" frameborder="0" style="border:0" 
+                         src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.01}%2C${latitude-0.01}%2C${longitude+0.01}%2C${latitude+0.01}&amp;layer=mapnik&amp;marker=${latitude}%2C${longitude}" allowfullscreen></iframe>`;
                     
                     // نمایش لینک موقعیت برای تست
                     locationLink.href = geoUri;
@@ -1195,8 +1122,7 @@ locationStatus.classList.add('location-error');
         }
         
         // فیلتر کردن محصولات بر اساس جستجو
-
-function filterProducts() {
+        function filterProducts() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const productCards = document.querySelectorAll('.product-card');
             
@@ -1252,7 +1178,7 @@ function filterProducts() {
         
         // تابع ارسال به تلگرام
         async function sendToTelegram(orderData) {
-            const message = 
+            const message = `
 🛒 سفارش جدید از فروشگاه
 👤 نام: ${orderData.name}
 📞 تلفن: ${orderData.phone}
@@ -1262,10 +1188,10 @@ function filterProducts() {
 📋 سفارشات:
 ${orderData.items}
 📍 موقعیت مکانی: ${orderData.location || 'ارسال نشده'}
-            ;
+            `;
 
             try {
-                const response = await fetch(https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage, {
+                const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -1303,8 +1229,7 @@ ${orderData.items}
             
             // جمع‌آوری داده‌های فرم
             const orderData = {
-
-name: document.getElementById('name').value,
+                name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
                 address: document.getElementById('address').value,
                 delivery: document.getElementById('delivery').value,
