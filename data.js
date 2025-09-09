@@ -17,6 +17,22 @@ const allProducts = [
                     <li>ماندگاری: ۵ روز در یخچال</li>
                 </ul>
             `
+                    id: "tea-001",
+        name: "چای مخصوص",
+        price: "350",
+        image: "https://images.unsplash.com/photo-1563822245302-272c9e0e71e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        details: {
+            title: "جزئیات چای مخصوص",
+            content: `
+                <p>چای مخصوص با ترکیبی منحصر به فرد از برگ‌های چای مرغوب و گیاهان معطر. از ویژگی‌های این محصول:</p>
+                <ul>
+                    <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
+                    <li>عاری از هرگونه اسانس مصنوعی</li>
+                    <li>مناسب برای مصرف روزانه</li>
+                    <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
+                    <li>وزن خالص: ۴۵۰ گرم</li>
+                </ul>
+            `
         }
     },
     {
@@ -34,6 +50,22 @@ const allProducts = [
                     <li>حاوی شیر تازه</li>
                     <li>تازه پخته شده روزانه</li>
                     <li>مصرف بهتر: همان روز تولید</li>
+                </ul>
+            `
+        id: "tea-001",
+        name: "چای مخصوص",
+        price: "350",
+        image: "https://images.unsplash.com/photo-1563822245302-272c9e0e71e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+        details: {
+            title: "جزئیات چای مخصوص",
+            content: `
+                <p>چای مخصوص با ترکیبی منحصر به فرد از برگ‌های چای مرغوب و گیاهان معطر. از ویژگی‌های این محصول:</p>
+                <ul>
+                    <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
+                    <li>عاری از هرگونه اسانس مصنوعی</li>
+                    <li>مناسب برای مصرف روزانه</li>
+                    <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
+                    <li>وزن خالص: ۴۵۰ گرم</li>
                 </ul>
             `
         }
