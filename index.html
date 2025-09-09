@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه علی کرمی</title>
+    <title>رستوران الحیات</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="data.js" defer></script>
     <style>
@@ -32,6 +32,183 @@
             border-radius: 10px;
             margin-bottom: 20px;
             text-align: center;
+            margin-top: 80px; /* فضای بیشتر برای موبایل */
+        }
+        
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            height: 180px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 25px;
+            margin-bottom: 20px;
+            margin-top: 20px; /* فاصله از بالا */
+        }
+        
+        .gold-text {
+            background: linear-gradient(to right, #ffd700, #daa520, #b8860b, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+        }
+        
+        .restaurant-name {
+            font-size: 28px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            margin-bottom: 5px;
+        }
+        
+        .profile-container {
+            position: absolute;
+            top: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 130px;
+            perspective: 1000px;
+            z-index: 2;
+        }
+        
+        .profile-card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            pointer-events: none;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .profile-img.back {
+            transform: rotateY(180deg);
+        }
+        
+        .flipping {
+            transform: rotateY(180deg);
+        }
+        
+        .gold-frame {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffd700, #daa520, #b8860b, #ffd700);
+            z-index: -1;
+            box-shadow: 0 0 20px rgba(218, 165, 32, 0.7);
+        }
+        
+        .instruction {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+            margin-top: 5px;
+        }
+        
+        .map-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            border: none;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            text-align: center;
+            width: 90%;
+        }
+        
+        .navigate-btn {
+            background: linear-gradient(45deg, #ffd700, #daa520);
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+        }
+        
+        .navigate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .navigate-btn:active {
+            transform: translateY(0);
+        }
+        
+        .map-profile {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        
+        .map-profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .search-bar {
@@ -243,16 +420,17 @@
             background: #f5f5f5;
         }
         
-        /* سبد خرید */
-        .cart-container {
+        /* دکمه تحویل (سبد خرید سابق) */
+        .delivery-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
         }
         
-        .cart-button {
-            background: #FF5722;
+        .delivery-button {
+            background: rgba(255, 87, 34, 0.8);
+            backdrop-filter: blur(10px);
             color: white;
             width: 60px;
             height: 60px;
@@ -265,6 +443,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             position: relative;
             animation: bounce 2s infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         @keyframes bounce {
@@ -273,7 +452,7 @@
             60% { transform: translateY(-7px); }
         }
         
-        .cart-count {
+        .delivery-count {
             position: absolute;
             top: -5px;
             right: -5px;
@@ -289,7 +468,7 @@
             font-weight: bold;
         }
         
-        .cart-sidebar {
+        .delivery-sidebar {
             position: fixed;
             top: 0;
             right: -350px;
@@ -305,7 +484,7 @@
             flex-direction: column;
         }
         
-        .cart-header {
+        .delivery-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -314,7 +493,7 @@
             border-bottom: 1px solid #eee;
         }
         
-        .close-cart {
+        .close-delivery {
             background: #F44336;
             color: white;
             border: none;
@@ -328,11 +507,11 @@
             font-size: 14px;
         }
         
-        .cart-sidebar.open {
+        .delivery-sidebar.open {
             right: 0;
         }
         
-        .cart-overlay {
+        .delivery-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -343,16 +522,16 @@
             z-index: 1000;
         }
         
-        .cart-overlay.open {
+        .delivery-overlay.open {
             display: block;
         }
         
-        .cart-items {
+        .delivery-items {
             flex-grow: 1;
             overflow-y: auto;
         }
         
-        .cart-item {
+        .delivery-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -360,11 +539,11 @@
             border-bottom: 1px solid #eee;
         }
         
-        .cart-item-info {
+        .delivery-item-info {
             flex: 1;
         }
         
-        .cart-item-controls {
+        .delivery-item-controls {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -394,7 +573,7 @@
             text-align: center;
         }
         
-        .remove-from-cart {
+        .remove-from-delivery {
             background: #F44336;
             color: white;
             border: none;
@@ -553,7 +732,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: #4CAF50;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             color: white;
             padding: 20px 30px;
             border-radius: 15px;
@@ -564,6 +744,7 @@
             pointer-events: none;
             text-align: center;
             min-width: 250px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .notification.show {
@@ -581,14 +762,51 @@
             font-size: 12px;
             margin-right: 5px;
         }
+        
+        /* جلوگیری از زوم در دستگاه های لمسی */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="shop-header">
-            <h1>فروشگاه علی کرمی</h1>
-            <p>فروشگاه تخصصی خوراکی و مواد غذایی</p>
+            <h1>رستوران الحیات</h1>
+            <p>رستوران غذاهای خوشمزه و با کیفیت</p>
         </header>
+
+        <div class="profile-section">
+            <div class="profile-card">
+                <div class="profile-container">
+                    <div class="gold-frame"></div>
+                    <div class="profile-card-inner" id="profileCard">
+                        <img id="profileFront" class="profile-img" src="https://i.ibb.co/h1WxGF4T/IMG-20250909-191200.jpg" alt="پروفایل">
+                        <img id="profileBack" class="profile-img back" src="https://i.ibb.co/sJRt8sFk/IMG-20250909-191142.jpg" alt="پروفایل">
+                    </div>
+                </div>
+                
+                <h1 class="restaurant-name gold-text">رستوران الحیات</h1>
+                
+                <p class="instruction">تغییر خودکار هر 5 ثانیه</p>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-profile">
+                    <img src="https://i.ibb.co/h1WxGF4T/IMG-20250909-191200.jpg" alt="رستوران الحیات">
+                </div>
+                <iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3286.536067912829!2d69.133729!3d34.5794404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDM0JzQ2LjAiTiA2OcKwMDgnMDkuMCJF!5e0!3m2!1sen!2s!4v1633700000000!5m2!1sen!2s" allowfullscreen="" loading="lazy"></iframe>
+                <div class="map-overlay">
+                    <button class="navigate-btn" onclick="openNavigation()">
+                        <i class="fas fa-location-arrow"></i>
+                        مسیریابی در نقشه
+                    </button>
+                </div>
+            </div>
+        </div>
 
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="جستجوی محصولات...">
@@ -669,14 +887,14 @@
     </div>
 
     <!-- سبد خرید -->
-    <div class="cart-overlay" id="cartOverlay"></div>
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
+    <div class="delivery-overlay" id="deliveryOverlay"></div>
+    <div class="delivery-sidebar" id="deliverySidebar">
+        <div class="delivery-header">
             <h2>سبد خرید</h2>
-            <button class="close-cart" id="closeCart">✕</button>
+            <button class="close-delivery" id="closeDelivery">✕</button>
         </div>
-        <div class="cart-items" id="cartItems"></div>
-        <div id="cartTotal" style="margin-top: 20px; font-weight: bold;"></div>
+        <div class="delivery-items" id="deliveryItems"></div>
+        <div id="deliveryTotal" style="margin-top: 20px; font-weight: bold;"></div>
         <button class="checkout-btn" id="checkoutButton">تکمیل سفارش</button>
     </div>
 
@@ -695,11 +913,11 @@
         </div>
     </div>
 
-    <!-- آیکون سبد خرید -->
-    <div class="cart-container">
-        <div class="cart-button" id="cartButton">
-            <i class="fas fa-shopping-cart"></i>
-            <div class="cart-count" id="cartCount">0</div>
+    <!-- آیکون تحویل (پیک موتوری) -->
+    <div class="delivery-container">
+        <div class="delivery-button" id="deliveryButton">
+            <i class="fas fa-motorcycle"></i>
+            <div class="delivery-count" id="deliveryCount">0</div>
         </div>
     </div>
 
@@ -715,19 +933,35 @@
         let cart = [];
         let userLocation = null;
         
+        // پروفایل‌ها با استفاده از عکس‌های شما
+        const profiles = [
+            "https://i.ibb.co/h1WxGF4T/IMG-20250909-191200.jpg",
+            "https://i.ibb.co/sJRt8sFk/IMG-20250909-191142.jpg"
+        ];
+        
+        let currentProfileIndex = 0;
+        let nextProfileIndex = 1;
+        let isFlipping = false;
+        
+        const profileCard = document.getElementById('profileCard');
+        const profileFront = document.getElementById('profileFront');
+        const profileBack = document.getElementById('profileBack');
+        const mapProfile = document.querySelector('.map-profile img');
+        
         // صبر می‌کنیم تا DOM کاملاً لود شود
         document.addEventListener('DOMContentLoaded', function() {
             // مقداردهی اولیه
             renderProducts();
             updateCart();
+            startProfileRotation();
             
             // مدیریت جستجو
             document.getElementById('searchInput').addEventListener('input', filterProducts);
             
             // سایر event listenerها
-            document.getElementById('cartButton').addEventListener('click', openCart);
-            document.getElementById('cartOverlay').addEventListener('click', closeCart);
-            document.getElementById('closeCart').addEventListener('click', closeCart);
+            document.getElementById('deliveryButton').addEventListener('click', openCart);
+            document.getElementById('deliveryOverlay').addEventListener('click', closeCart);
+            document.getElementById('closeDelivery').addEventListener('click', closeCart);
             document.getElementById('checkoutButton').addEventListener('click', showOrderForm);
             
             // مدیریت چت
@@ -751,9 +985,42 @@
                 }
             });
             
-            // اعتبارسنجی فildهای فرم
+            // اعتبارسنجی فیلدهای فرم
             setupFormValidation();
         });
+        
+        // تابع برای چرخش پروفایل
+        function startProfileRotation() {
+            // تغییر پروفایل هر 5 ثانیه
+            setInterval(changeProfile, 5000);
+        }
+        
+        // تابع برای تغییر پروفایل با افکت ورق زدن
+        function changeProfile() {
+            if (isFlipping) return;
+            
+            isFlipping = true;
+            
+            // افزایش ایندکس و بازگشت به ابتدا در صورت لزوم
+            currentProfileIndex = (currentProfileIndex + 1) % profiles.length;
+            nextProfileIndex = (currentProfileIndex + 1) % profiles.length;
+            
+            // تنظیم تصویر بعدی در پشت کارت
+            profileBack.src = profiles[nextProfileIndex];
+            
+            // شروع افکت ورق زدن
+            profileCard.classList.add('flipping');
+            
+            // پس از اتمام انیمیشن، تصویر جلویی را تغییر می‌دهیم
+            setTimeout(() => {
+                profileFront.src = profiles[currentProfileIndex];
+                // همچنین تصویر پروفایل در نقشه را تغییر می‌دهیم
+                mapProfile.src = profiles[currentProfileIndex];
+                profileCard.classList.remove('flipping');
+                
+                isFlipping = false;
+            }, 800);
+        }
         
         // تابع برای نمایش محصولات
         function renderProducts() {
@@ -887,10 +1154,10 @@
         }
         
         function animateCart() {
-            const cartButton = document.getElementById('cartButton');
-            cartButton.classList.remove('bounce');
-            void cartButton.offsetWidth; // Trigger reflow
-            cartButton.classList.add('bounce');
+            const deliveryButton = document.getElementById('deliveryButton');
+            deliveryButton.classList.remove('bounce');
+            void deliveryButton.offsetWidth; // Trigger reflow
+            deliveryButton.classList.add('bounce');
         }
         
         function increaseQuantity(id) {
@@ -923,11 +1190,11 @@
         }
         
         function updateCart() {
-            const cartItems = document.getElementById('cartItems');
-            const cartTotal = document.getElementById('cartTotal');
-            const cartCount = document.getElementById('cartCount');
+            const deliveryItems = document.getElementById('deliveryItems');
+            const deliveryTotal = document.getElementById('deliveryTotal');
+            const deliveryCount = document.getElementById('deliveryCount');
             
-            cartItems.innerHTML = '';
+            deliveryItems.innerHTML = '';
             let total = 0;
             let count = 0;
             
@@ -935,14 +1202,14 @@
                 total += item.price * item.quantity;
                 count += item.quantity;
                 
-                const cartItemElement = document.createElement('div');
-                cartItemElement.className = 'cart-item';
-                cartItemElement.innerHTML = `
-                    <div class="cart-item-info">
+                const deliveryItemElement = document.createElement('div');
+                deliveryItemElement.className = 'delivery-item';
+                deliveryItemElement.innerHTML = `
+                    <div class="delivery-item-info">
                         <div>${item.name}</div>
                         <div>${item.price} افغانی</div>
                     </div>
-                    <div class="cart-item-controls">
+                    <div class="delivery-item-controls">
                         <button class="cancel-item" data-id="${item.id}">لغو</button>
                         <button class="quantity-btn" data-id="${item.id}" data-action="decrease">-</button>
                         <span class="item-quantity">${item.quantity}</span>
@@ -951,9 +1218,9 @@
                 `;
                 
                 // اضافه کردن event listener برای دکمه‌های افزایش و کاهش
-                const increaseBtn = cartItemElement.querySelector('[data-action="increase"]');
-                const decreaseBtn = cartItemElement.querySelector('[data-action="decrease"]');
-                const cancelBtn = cartItemElement.querySelector('.cancel-item');
+                const increaseBtn = deliveryItemElement.querySelector('[data-action="increase"]');
+                const decreaseBtn = deliveryItemElement.querySelector('[data-action="decrease"]');
+                const cancelBtn = deliveryItemElement.querySelector('.cancel-item');
                 
                 increaseBtn.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-id');
@@ -970,25 +1237,25 @@
                     removeItemFromCart(itemId);
                 });
                 
-                cartItems.appendChild(cartItemElement);
+                deliveryItems.appendChild(deliveryItemElement);
             });
             
-            cartTotal.textContent = `مجموع: ${total} افغانی`;
-            cartCount.textContent = count;
+            deliveryTotal.textContent = `مجموع: ${total} افغانی`;
+            deliveryCount.textContent = count;
             
             if (cart.length === 0) {
-                cartItems.innerHTML = '<p>سبد خرید شما خالی است</p>';
+                deliveryItems.innerHTML = '<p>سبد خرید شما خالی است</p>';
             }
         }
         
         function openCart() {
-            document.getElementById('cartSidebar').classList.add('open');
-            document.getElementById('cartOverlay').classList.add('open');
+            document.getElementById('deliverySidebar').classList.add('open');
+            document.getElementById('deliveryOverlay').classList.add('open');
         }
         
         function closeCart() {
-            document.getElementById('cartSidebar').classList.remove('open');
-            document.getElementById('cartOverlay').classList.remove('open');
+            document.getElementById('deliverySidebar').classList.remove('open');
+            document.getElementById('deliveryOverlay').classList.remove('open');
         }
         
         function showOrderForm() {
@@ -1179,7 +1446,7 @@
         // تابع ارسال به تلگرام
         async function sendToTelegram(orderData) {
             const message = `
-🛒 سفارش جدید از فروشگاه
+🛒 سفارش جدید از رستوران
 👤 نام: ${orderData.name}
 📞 تلفن: ${orderData.phone}
 📍 آدرس: ${orderData.address}
@@ -1259,6 +1526,12 @@ ${orderData.items}
                 console.error('Error:', error);
             }
         }
+        
+        // تابع برای باز کردن مسیریابی
+        function openNavigation() {
+            // باز کردن اپلیکیشن نقشه با لینک ارائه شده
+            window.open('https://maps.app.goo.gl/4y1RsFGingCUtJXy9', '_blank');
+        }
     </script>
 </body>
-</html>
+    </html>
