@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کیک و کلچه فروشی امیرجان</title>
+    <title>فروشگاه علی کرمی</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -141,9 +141,9 @@
             background: white;
             padding: 20px;
             border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
 
-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-            z-index: 1002;
+z-index: 1002;
             width: 90%;
             max-width: 500px;
             max-height: 80vh;
@@ -284,9 +284,9 @@ box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
             border-radius: 50%;
             display: flex;
             align-items: center;
+            justify-content: center;
 
-justify-content: center;
-            font-size: 14px;
+font-size: 14px;
             font-weight: bold;
         }
         
@@ -558,7 +558,7 @@ width: 100%;
             background: #4CAF50;
             color: white;
             padding: 20px 30px;
-            border-radius: 15px;
+            border-radius: 15px; /* گردتر کردن گوشه‌ها */
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             transition: opacity 0.3s ease;
@@ -588,16 +588,132 @@ width: 100%;
 <body>
     <div class="container">
         <header class="shop-header">
-            <h1>کیک و کلچه امیرجان</h1>
-            <p>کیک و کلچه امیرجان با بهترین کیفیت برای شما مشتریان عزیز</p>
+            <h1>فروشگاه علی کرمی</h1>
+            <p>فروشگاه تخصصی خوراکی و مواد غذایی</p>
         </header>
 
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="جستجوی محصولات...">
         </div>
 
-<div class="products-grid" id="products-container">
-            <!-- محصولات به صورت خودکار اینجا نمایش داده می‌شوند -->
+<div class="products-grid">
+            <div class="product-card" data-name="کیک شکلاتی">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80')"></div>
+                <div class="product-info">
+                    <h3>کیک شکلاتی</h3>
+                    <p>500 افغانی</p>
+                    <button class="add-to-cart" data-id="cake-001" data-name="کیک شکلاتی" data-price="500">
+                        افزودن به سبد خرید
+                    </button>
+                    <button class="details-btn" data-details="details-cake-001">
+                        جزئیات محصول
+                    </button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-name="نان شیرمال">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80')"></div>
+                <div class="product-info">
+                    <h3>نان شیرمال</h3>
+                    <p>300 افغانی</p>
+                    <button class="add-to-cart" data-id="bread-001" data-name="نان شیرمال" data-price="300">
+                        افزودن به سبد خرید
+                    </button>
+                    <button class="details-btn" data-details="details-bread-001">
+                        جزئیات محصول
+                    </button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-name="شیرینی خشک">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80')"></div>
+                <div class="product-info">
+                    <h3>شیرینی خشک</h3>
+                    <p>400 افغانی</p>
+                    <button class="add-to-cart" data-id="sweet-001" data-name="شیرینی خشک" data-price="400">
+                        افزودن به سبد خرید
+                    </button>
+                    <button class="details-btn" data-details="details-sweet-001">
+                        جزئیات محصول
+                    </button>
+                </div>
+            </div>
+            
+            <div class="product-card" data-name="چای مخصوص">
+                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1563822245302-272c9e0e71e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80')"></div>
+                <div class="product-info">
+                    <h3>چای مخصوص</h3>
+                    <p>350 افغانی</p>
+                    <button class="add-to-cart" data-id="tea-001" data-name="چای مخصوص" data-price="350">
+                        افزودن به سبد خرید
+                    </button>
+                    <button class="details-btn" data-details="details-tea-001">
+                        جزئیات محصول
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- جزئیات محصولات (پنهان) -->
+        <div class="product-details" id="details-cake-001">
+            <h3>جزئیات کیک شکلاتی</h3>
+            <div class="product-details-content">
+                <p>این کیک شکلاتی با بهترین مواد اولیه و بدون هیچ گونه مواد نگهدارنده تهیه شده است. از ویژگی‌های این محصول:</p>
+                <ul>
+                    <li>حاوی شکلات مرغوب بلژیکی</li>
+                    <li>فاقد مواد نگهدارنده</li>
+                    <li>مناسب برای افراد دیابتی (نسخه بدون قند)</li>
+
+<li>حجم: ۱ کیلوگرم</li>
+                    <li>ماندگاری: ۵ روز در یخچال</li>
+                </ul>
+            </div>
+            <button class="close-details">بستن</button>
+        </div>
+        
+        <div class="product-details" id="details-bread-001">
+            <h3>جزئیات نان شیرمال</h3>
+            <div class="product-details-content">
+                <p>نان شیرمال تازه پخته شده با روش سنتی و مواد اولیه مرغوب. از ویژگی‌های این محصول:</p>
+                <ul>
+                    <li>تهیه شده از آرد ستاره</li>
+                    <li>فاقد هرگونه جوش شیرین</li>
+                    <li>حاوی شیر تازه</li>
+                    <li>تازه پخته شده روزانه</li>
+                    <li>مصرف بهتر: همان روز تولید</li>
+                </ul>
+            </div>
+            <button class="close-details">بستن</button>
+        </div>
+        
+        <div class="product-details" id="details-sweet-001">
+            <h3>جزئیات شیرینی خشک</h3>
+            <div class="product-details-content">
+                <p>شیرینی خشک سنتی با طعمی بی‌نظیر و کیفیت بالا. از ویژگی‌های این محصول:</p>
+                <ul>
+                    <li>انواع مختلف: بادامی، نارگیلی، پستهای</li>
+                    <li>تهیه شده با بهترین مواد اولیه</li>
+                    <li>فاقد روغن نباتی</li>
+                    <li>بسته‌بندی شکیل و مناسب برای سوغات</li>
+                    <li>ماندگاری: ۳۰ روز در دمای محیط</li>
+                </ul>
+            </div>
+            <button class="close-details">بستن</button>
+        </div>
+        
+        <div class="product-details" id="details-tea-001">
+            <h3>جزئیات چای مخصوص</h3>
+            <div class="product-details-content">
+                <p>چای مخصوص با ترکیبی از بهترین برگ‌های چای و گیاهان معطر. از ویژگی‌های این محصول:</p>
+                <ul>
+                    <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
+                    <li>عاری از هرگونه اسانس مصنوعی</li>
+                    <li>مناسب برای مصرف روزانه</li>
+                    <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
+                    <li>وزن خالص: ۴۵۰ گرم</li>
+                </ul>
+            </div>
+            <button class="close-details">بستن</button>
         </div>
         
         <div class="details-overlay" id="detailsOverlay"></div>
@@ -631,11 +747,12 @@ width: 100%;
                         <option value="pickup">تحویل در فروشگاه</option>
                     </select>
                     <div class="error-message" id="deliveryError">لطفاً نحوه تحویل را انتخاب کنید</div>
-                </div>
+
+</div>
                 
                 <div class="form-group">
                     <label for="details">جزییات اضافی (اختیاری):</label>
-                    <textarea id="details" name="details" placeholder="ملاحظات خاص یا توضیحات اضاف"></textarea>
+                    <textarea id="details" name="details" placeholder="ملاحظات خاص یا توضیحات اضافی"></textarea>
                 </div>
                 
                 <!-- بخش دریافت موقعیت مکانی -->
@@ -647,7 +764,7 @@ width: 100%;
                     <div id="locationStatus" class="location-status"></div>
                     <div id="mapPreview" class="map-preview"></div>
                     <a id="locationLink" class="location-link" target="_blank" style="display: none;">مشاهده موقعیت در نقشه</a>
-                    <span id="testLocation" class="test-location" style="display: none;">برای برسی روی لینک بالا کلیک کنید</span>
+                    <span id="testLocation" class="test-location" style="display: none;">برای تست روی لینک بالا کلیک کنید</span>
                     
                     <!-- این فیلد برای ارسال لینک نقشه استفاده می‌شود -->
                     <input type="hidden" id="locationData" name="موقعیت مکانی">
@@ -675,8 +792,7 @@ width: 100%;
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
             <h2>سبد خرید</h2>
-
-<button class="close-cart" id="closeCart">✕</button>
+            <button class="close-cart" id="closeCart">✕</button>
         </div>
         <div class="cart-items" id="cartItems"></div>
         <div id="cartTotal" style="margin-top: 20px; font-weight: bold;"></div>
@@ -709,109 +825,10 @@ width: 100%;
     <!-- نوتیفیکیشن -->
     <div class="notification" id="notification">محصول به سبد خرید اضافه شد!</div>
 
-    <!-- تمپلیت محصول (پنهان) -->
-    <div class="product-card" id="product-template" style="display: none;">
-        <div class="product-image"></div>
-        <div class="product-info">
-            <h3 class="product-title"></h3>
-            <p class="product-price"></p>
-            <button class="add-to-cart">افزودن به سبد خرید</button>
-            <button class="details-btn">جزئیات محصول</button>
-        </div>
-    </div>
-
-    <!-- تمپلیت جزئیات محصول (پنهان) -->
-    <div class="product-details" id="details-template" style="display: none;">
-        <h3 class="details-title"></h3>
-        <div class="product-details-content"></div>
-        <button class="close-details">بستن</button>
-    </div>
-
     <script>
         // تنظیمات بات تلگرام
         const TELEGRAM_BOT_TOKEN = '8274421553:AAE4UISpQ5vpx3OpLRx3jQvJvSlkLJt43iA';
         const TELEGRAM_CHAT_ID = '7912053361';
-        
-        // داده‌های محصولات
-        const allProducts = [
-            {
-                id: "cake-001",
-                name: "کیک ککویی",
-                price: "500",
-                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1089&q=80",
-                details: {
-                    title: "جزئیات کیک ککویی",
-                    content: 
-                        <p>این کیک ککویی با بهترین مواد اولیه و بدون هیچ گونه مواد نگهدارنده تهیه شده است. از ویژگی‌های این محصول:</p>
-                        <ul>
-                            <li>حاوی ککو مرغوب بلژیکی</li>
-                            <li>فاقد مواد نگهدارنده</li>
-                            <li>مناسب برای افراد دیابتی (نسخه بدون قند)</li>
-                            <li>حجم: ۱ کیلوگرم</li>
-                            <li>ماندگاری: ۵ روز در یخچال</li>
-                        </ul>
-                    
-                }
-            },
-            {
-                id: "bread-001",
-                name: "کلچه با طعم قهوه",
-                price: "300",
-                image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1172&q=80",
-                details: {
-                    title: "جزئیات کلچه با طعم قهوه",
-                    content: `
-                        <p>کلچه با طعم قهوه تازه پخته شده با روش سنتی و مواد اولیه مرغوب. از ویژگی‌های این محصول:</p>
-                        <ul>
-                            <li>تهیه شده از آرد ستاره</li>
-                            <li>فاقد هرگونه قند شیرین</li>
-                            <li>حاوی شیر تازه</li>
-
-<li>تازه پخته شده روزانه</li>
-                            <li>مصرف بهتر: همان روز تولید</li>
-                        </ul>
-                    
-                }
-            },
-            {
-                id: "sweet-001",
-                name: "کیک خامه خوشک",
-                price: "400",
-                image: "https://images.unsplash.com/photo-1612203985729-70726954388c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80",
-                details: {
-                    title: "جزئیات کیک خامه خشک",
-                    content: 
-                        <p>کیک خامه سنتی با طعمی بی‌نظیر و کیفیت بالا. از ویژگی‌های این محصول:</p>
-                        <ul>
-                            <li>انواع مختلف: بادامی، نارگیلی، پستهای</li>
-                            <li>تهیه شده با بهترین مواد اولیه</li>
-                            <li>فاقد روغن نباتی</li>
-                            <li>بسته‌بندی شکیل و مناسب برای سوغات</li>
-                            <li>ماندگاری: ۳۰ روز در دمای محیط</li>
-                        </ul>
-                    
-                }
-            },
-            {
-                id: "tea-001",
-                name: "چای مخصوص",
-                price: "350",
-                image: "https://images.unsplash.com/photo-1563822245302-272c9e0e71e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-                details: {
-                    title: "جزئیات چای مخصوص",
-                    content: 
-                        <p>چای مخصوص با ترکیبی از بهترین برگ‌های چای و گیاهان معطر. از ویژگی‌های این محصول:</p>
-                        <ul>
-                            <li>ترکیبی از چای سیاه مرغوب و گیاهان معطر</li>
-                            <li>عاری از هرگونه اسانس مصنوعی</li>
-                            <li>مناسب برای مصرف روزانه</li>
-                            <li>بسته‌بندی نفوذناپذیر برای حفظ عطر و طعم</li>
-                            <li>وزن خالص: ۴۵۰ گرام</li>
-                        </ul>
-                    `
-                }
-            }
-        ];
         
         // مدیریت سبد خرید
         let cart = [];
@@ -820,13 +837,37 @@ width: 100%;
         // صبر می‌کنیم تا DOM کاملاً لود شود
         document.addEventListener('DOMContentLoaded', function() {
             // مقداردهی اولیه
-            renderProducts();
             updateCart();
             
-            // مدیریت جستجو
-            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            // اضافه کردن محصول به سبد خرید
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+
+button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseInt(this.getAttribute('data-price'));
+                    addToCart(name, price, id);
+                });
+            });
             
-            // سایر event listenerها
+            // نمایش جزئیات محصول
+            const detailsButtons = document.querySelectorAll('.details-btn');
+            detailsButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const detailsId = this.getAttribute('data-details');
+                    showProductDetails(detailsId);
+                });
+            });
+            
+            // بستن جزئیات محصول
+            document.querySelectorAll('.close-details').forEach(button => {
+                button.addEventListener('click', closeProductDetails);
+            });
+            
+            document.getElementById('detailsOverlay').addEventListener('click', closeProductDetails);
+            
+            // مدیریت سبد خرید
             document.getElementById('cartButton').addEventListener('click', openCart);
             document.getElementById('cartOverlay').addEventListener('click', closeCart);
             document.getElementById('closeCart').addEventListener('click', closeCart);
@@ -843,11 +884,13 @@ width: 100%;
             // مدیریت فرم
             document.getElementById('checkoutForm').addEventListener('submit', handleFormSubmit);
             
+            // مدیریت جستجو
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            
             // بستن منوهای باز وقتی کاربر در خارج از آنها کلیک می‌کند
             document.addEventListener('click', function(event) {
                 const chatOptions = document.getElementById('chatOptions');
-
-const chatButton = document.getElementById('chatButton');
+                const chatButton = document.getElementById('chatButton');
                 
                 if (chatOptions.style.display === 'flex' && !chatOptions.contains(event.target) && !chatButton.contains(event.target)) {
                     chatOptions.style.display = 'none';
@@ -858,82 +901,8 @@ const chatButton = document.getElementById('chatButton');
             setupFormValidation();
         });
         
-        // تابع برای نمایش محصولات
-        function renderProducts() {
-            const container = document.getElementById('products-container');
-            const productTemplate = document.getElementById('product-template');
-            const detailsTemplate = document.getElementById('details-template');
-            
-            // پاک کردن محتوای قبلی
-            container.innerHTML = '';
-            document.querySelectorAll('.product-details:not(#details-template)').forEach(el => el.remove());
-            
-            // ساخت محصولات
-            allProducts.forEach(product => {
-                // ساخت کارت محصول
-                const productCard = productTemplate.cloneNode(true);
-                productCard.style.display = 'block';
-                productCard.removeAttribute('id');
-                productCard.dataset.name = product.name;
-                
-                // پر کردن اطلاعات
-                productCard.querySelector('.product-image').style.backgroundImage = url('${product.image}');
-                productCard.querySelector('.product-title').textContent = product.name;
-                productCard.querySelector('.product-price').textContent = ${product.price} افغانی;
-                
-                // تنظیم دکمه‌ها
-                const addBtn = productCard.querySelector('.add-to-cart');
-                addBtn.dataset.id = product.id;
-                addBtn.dataset.name = product.name;
-                addBtn.dataset.price = product.price;
-                
-                const detailsBtn = productCard.querySelector('.details-btn');
-                detailsBtn.dataset.details = details-${product.id};
-                
-                // اضافه به صفحه
-                container.appendChild(productCard);
-                
-                // ساخت جزئیات محصول
-                const detailsElement = detailsTemplate.cloneNode(true);
-                detailsElement.style.display = 'none';
-                detailsElement.id = details-${product.id};
-                detailsElement.querySelector('.details-title').textContent = product.details.title;
-                detailsElement.querySelector('.product-details-content').innerHTML = product.details.content;
-                
-                document.body.appendChild(detailsElement);
-            });
-            
-            // اضافه کردن event listeners
-            attachEventListeners();
-        }
-        
-        // تابع برای اضافه کردن event listeners به محصولات
-        function attachEventListeners() {
-            // اضافه کردن event listeners به دکمه‌های جدید
-            document.querySelectorAll('.add-to-cart').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    addToCart(
-                        this.dataset.name, 
-                        parseInt(this.dataset.price), 
-                        this.dataset.id
-                    );
-                });
-            });
-            
-            document.querySelectorAll('.details-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    showProductDetails(this.dataset.details);
-                });
-            });
-            
-            document.querySelectorAll('.close-details').forEach(btn => {
-                btn.addEventListener('click', closeProductDetails);
-            });
-        }
-        
         // نمایش جزئیات محصول
-
-function showProductDetails(detailsId) {
+        function showProductDetails(detailsId) {
             const detailsElement = document.getElementById(detailsId);
             const overlay = document.getElementById('detailsOverlay');
             
@@ -958,7 +927,8 @@ function showProductDetails(detailsId) {
         // نمایش نوتیفیکیشن
         function showNotification(message) {
             const notification = document.getElementById('notification');
-            notification.textContent = message;
+
+notification.textContent = message;
             notification.classList.add('show');
             
             setTimeout(() => {
@@ -1038,8 +1008,7 @@ function showProductDetails(detailsId) {
                 
                 const cartItemElement = document.createElement('div');
                 cartItemElement.className = 'cart-item';
-
-cartItemElement.innerHTML = 
+                cartItemElement.innerHTML = 
                     <div class="cart-item-info">
                         <div>${item.name}</div>
                         <div>${item.price} افغانی</div>
@@ -1055,7 +1024,8 @@ cartItemElement.innerHTML =
                 // اضافه کردن event listener برای دکمه‌های افزایش و کاهش
                 const increaseBtn = cartItemElement.querySelector('[data-action="increase"]');
                 const decreaseBtn = cartItemElement.querySelector('[data-action="decrease"]');
-                const cancelBtn = cartItemElement.querySelector('.cancel-item');
+
+const cancelBtn = cartItemElement.querySelector('.cancel-item');
                 
                 increaseBtn.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-id');
@@ -1125,13 +1095,12 @@ cartItemElement.innerHTML =
         }
         
         function makeCall() {
-            window.location.href = 'tel:+93701326081';
+            window.location.href = 'tel:+93777777777'; // شماره تلفن خود را جایگزین کنید
             toggleChatOptions();
         }
         
         function startChat() {
-
-window.open('https://wa.me/989939277416', '_blank');
+            window.open('https://wa.me/93777777777', '_blank'); // شماره واتساپ خود را جایگزین کنید
             toggleChatOptions();
         }
         
@@ -1150,7 +1119,8 @@ window.open('https://wa.me/989939277416', '_blank');
             
             if (!navigator.geolocation) {
                 locationStatus.textContent = 'مرورگر شما از دریافت موقعیت پشتیبانی نمی‌کند.';
-                locationStatus.classList.add('location-error');
+
+locationStatus.classList.add('location-error');
                 getLocationBtn.disabled = false;
                 getLocationBtn.textContent = '📍 دریافت موقعیت مکانی';
                 return;
@@ -1185,9 +1155,9 @@ window.open('https://wa.me/989939277416', '_blank');
                         <iframe width="100%" height="100%" frameborder="0" style="border:0" 
                          src="https://www.openstreetmap.org/export/embed.html?bbox=${longitude-0.01}%2C${latitude-0.01}%2C${longitude+0.01}%2C${latitude+0.01}&amp;layer=mapnik&amp;marker=${latitude}%2C${longitude}" allowfullscreen></iframe>;
                     
-                    // نمایش لینک موقعیت شما
+                    // نمایش لینک موقعیت برای تست
                     locationLink.href = geoUri;
-                    locationLink.textContent = '📍 باز کردن موقعیت در MAP نقشه';
+                    locationLink.textContent = '📍 باز کردن موقعیت در اپلیکیشن نقشه';
                     locationLink.style.display = 'block';
                     testLocation.style.display = 'block';
                     
@@ -1202,8 +1172,7 @@ window.open('https://wa.me/989939277416', '_blank');
                             break;
                         case error.POSITION_UNAVAILABLE:
                             errorMessage = "اطلاعات موقعیت در دسترس نیست.";
-
-break;
+                            break;
                         case error.TIMEOUT:
                             errorMessage = "دریافت موقعیت زمان‌بر شد.";
                             break;
@@ -1226,7 +1195,8 @@ break;
         }
         
         // فیلتر کردن محصولات بر اساس جستجو
-        function filterProducts() {
+
+function filterProducts() {
             const searchTerm = document.getElementById('searchInput').value.toLowerCase();
             const productCards = document.querySelectorAll('.product-card');
             
@@ -1307,8 +1277,7 @@ ${orderData.items}
 
                 const result = await response.json();
                 console.log('پیام ارسال شد:', result);
-
-return result;
+                return result;
             } catch (error) {
                 console.error('خطا در ارسال:', error);
                 throw error;
@@ -1334,7 +1303,8 @@ return result;
             
             // جمع‌آوری داده‌های فرم
             const orderData = {
-                name: document.getElementById('name').value,
+
+name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
                 address: document.getElementById('address').value,
                 delivery: document.getElementById('delivery').value,
