@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رستوران الحیات</title>
+    <title>رستوران الحیات - بهترین غذاهای ایرانی و افغانی</title>
+    <meta name="description" content="رستوران الحیات ارائه دهنده بهترین غذاهای ایرانی و افغانی با کیفیت عالی و خدمات سریع. سفارش آنلاین غذا با امکان تحویل در محل.">
+    <meta name="keywords" content="رستوران الحیات, غذای ایرانی, غذای افغانی, سفارش آنلاین غذا, غذاهای محلی, کباب, قورمه سبزی, غذاهای خانگی">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="data.js" defer></script>
     <style>
@@ -25,21 +27,12 @@
             margin: 0 auto;
         }
         
-        .shop-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            margin-top: 80px; /* فضای بیشتر برای موبایل */
-        }
-        
         .profile-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             margin-bottom: 30px;
+            margin-top: 60px; /* افزایش فضای بالا برای جداسازی از لبه */
         }
         
         .profile-card {
@@ -58,7 +51,6 @@
             justify-content: flex-end;
             padding-bottom: 25px;
             margin-bottom: 20px;
-            margin-top: 20px; /* فاصله از بالا */
         }
         
         .gold-text {
@@ -770,15 +762,65 @@
             -webkit-user-select: none;
             user-select: none;
         }
+        
+        /* فوتر و بخش شبکه های اجتماعی */
+        .footer {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .telegram { background: #0088cc; }
+        .whatsapp { background: #25D366; }
+        .instagram { 
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        .facebook { background: #3b5998; }
+        
+        .copyright {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="shop-header">
-            <h1>رستوران الحیات</h1>
-            <p>رستوران غذاهای خوشمزه و با کیفیت</p>
-        </header>
-
         <div class="profile-section">
             <div class="profile-card">
                 <div class="profile-container">
@@ -884,6 +926,33 @@
             <h3>✅ سفارش شما با موفقیت ثبت شد!</h3>
             <p>به زودی با شما تماس خواهیم گرفت.</p>
         </div>
+
+        <!-- فوتر و بخش شبکه های اجتماعی -->
+        <footer class="footer">
+            <div class="footer-content">
+                <h3>رستوران الحیات</h3>
+                <p>بهترین غذاهای ایرانی و افغانی با کیفیت عالی</p>
+                
+                <div class="social-links">
+                    <a href="https://t.me/restaurant_alhayat" class="social-icon telegram" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://wa.me/93777777777" class="social-icon whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://instagram.com/restaurant_alhayat" class="social-icon instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/restaurant_alhayat" class="social-icon facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+                
+                <div class="copyright">
+                    <p>© ۲۰۲۳ رستوران الحیات. تمام حقوق مادی و معنوی این سایت محفوظ است.</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <!-- سبد خرید -->
@@ -1011,10 +1080,10 @@
             // شروع افکت ورق زدن
             profileCard.classList.add('flipping');
             
-            // پس از اتمام انیمیشن، تصویر جلویی را تغییر می‌دهیم
+            // پس از اتمام انیمیشن, تصویر جلویی را تغییر می‌دهیم
             setTimeout(() => {
                 profileFront.src = profiles[currentProfileIndex];
-                // همچنین تصویر پروفایل در نقشه را تغییر می‌دهیم
+                // همچنین تصویر پروفایل در نقشه را変更 می‌دهیم
                 mapProfile.src = profiles[currentProfileIndex];
                 profileCard.classList.remove('flipping');
                 
@@ -1137,10 +1206,10 @@
             const existingItemIndex = cart.findIndex(item => item.id === id);
             
             if (existingItemIndex !== -1) {
-                // اگر محصول وجود دارد، تعداد را افزایش می‌دهیم
+                // اگر محصول وجود دارد, تعداد را افزایش می‌دهیم
                 cart[existingItemIndex].quantity += 1;
             } else {
-                // اگر محصول وجود ندارد، جدید اضافه می‌کنیم
+                // اگر محصول وجود ندارد, جدید اضافه می‌کنیم
                 cart.push({ id, name, price, quantity: 1 });
             }
             
@@ -1174,7 +1243,7 @@
                 if (cart[itemIndex].quantity > 1) {
                     cart[itemIndex].quantity -= 1;
                 } else {
-                    // اگر تعداد ۱ است، حذف می‌کنیم
+                    // اگر تعداد ۱ است, حذف می‌کنیم
                     removeItemFromCart(id);
                 }
                 updateCart();
@@ -1486,9 +1555,9 @@ ${orderData.items}
                 return;
             }
             
-            // اگر موقعیت دریافت نشده، از کاربر تایید بگیرید
+            // اگر موقعیت دریافت نشده, از کاربر تایید بگیرید
             if (!userLocation) {
-                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی، سفارش را ثبت کنید؟");
+                const confirmSubmit = confirm("آیا مطمئن هستید که می‌خواهید بدون ارسال موقعیت مکانی, سفارش را ثبت کنید؟");
                 if (!confirmSubmit) {
                     return;
                 }
@@ -1534,4 +1603,4 @@ ${orderData.items}
         }
     </script>
 </body>
-    </html>
+</html>
