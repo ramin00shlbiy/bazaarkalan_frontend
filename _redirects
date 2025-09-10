@@ -1,2 +1,2 @@
-/alhayat/*  https://alhayatrestorant.netlify.app/:splat  200
-/alhayat    https://alhayatrestorant.netlify.app/        200
+/alhayat/*  https://alhayatrestorant.netlify.app/?path=:splat  200
+/alhayat    https://alhayatrestorant.netlify.app/              200
