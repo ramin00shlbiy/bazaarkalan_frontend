@@ -2,3 +2,4 @@
 /alhayat    https://alhayatrestorant.netlify.app/              200
 /shopzaman/*  https://shopzaman.netlify.app/?path=:splat       200
 /shopzaman    https://shopzaman.netlify.app/                   200
+/data.js      /data.js                                         200
