@@ -1,10 +1,19 @@
-# اول مطمئن شو data.js مستقیم خونده میشه
-/alhayat/data.js   /alhayat/data.js   200
-/shopzaman/data.js /shopzaman/data.js 200
+# اول فایل‌های استاتیک را مشخص کنید
+/alhayat/*.js    /alhayat/:splat.js    200
+/alhayat/*.css   /alhayat/:splat.css   200
+/alhayat/*.jpg   /alhayat/:splat.jpg   200
+/alhayat/*.png   /alhayat/:splat.png   200
+/alhayat/*.ico   /alhayat/:splat.ico   200
 
-# بعدش باقی مسیرها rewrite بشن
-/alhayat/*    https://alhayatrestorant.netlify.app/:splat  200
-/alhayat      https://alhayatrestorant.netlify.app/        200
+/shopzaman/*.js    /shopzaman/:splat.js    200
+/shopzaman/*.css   /shopzaman/:splat.css   200
+/shopzaman/*.jpg   /shopzaman/:splat.jpg   200
+/shopzaman/*.png   /shopzaman/:splat.png   200
+/shopzaman/*.ico   /shopzaman/:splat.ico   200
 
-/shopzaman/*  https://shopzaman.netlify.app/:splat         200
-/shopzaman    https://shopzaman.netlify.app/               200
+# سپس بقیه مسیرها را به سایت‌های مربوطه ریدایرکت کنید
+/alhayat/*    https://alhayatrestorant.netlify.app/?path=:splat  200
+/alhayat      https://alhayatrestorant.netlify.app/              200
+
+/shopzaman/*  https://shopzaman.netlify.app/?path=:splat         200
+/shopzaman    https://shopzaman.netlify.app/                     200
