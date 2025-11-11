@@ -5,16 +5,25 @@
 /alhayat/*.png    /alhayat/:splat   200
 /alhayat/*.ico    /alhayat/:splat   200
 
-# --- فایل‌های استاتیک shopzaman ---
+# --- فایل‌های استاتیک shopzaman و shopabrisham ---
 /shopzaman/*.js     /shopzaman/:splat   200
 /shopzaman/*.css    /shopzaman/:splat   200
 /shopzaman/*.jpg    /shopzaman/:splat   200
 /shopzaman/*.png    /shopzaman/:splat   200
 /shopzaman/*.ico    /shopzaman/:splat   200
 
-# --- بقیه مسیرها بره به اپ‌های جدا ---
+/shopabrisham/*.js     /shopzaman/:splat   200
+/shopabrisham/*.css    /shopzaman/:splat   200
+/shopabrisham/*.jpg    /shopzaman/:splat   200
+/shopabrisham/*.png    /shopzaman/:splat   200
+/shopabrisham/*.ico    /shopzaman/:splat   200
+
+# --- بقیه مسیرها ---
 /alhayat/*    https://alhayatrestorant.netlify.app/:splat   200
 /alhayat      https://alhayatrestorant.netlify.app/         200
 
 /shopzaman/*  https://shopabrisham.netlify.app/:splat       200
 /shopzaman    https://shopabrisham.netlify.app/             200
+
+/shopabrisham/*  https://shopabrisham.netlify.app/:splat    200
+/shopabrisham    https://shopabrisham.netlify.app/          200
